@@ -1,9 +1,8 @@
-FROM php:7.4-fpm-alpine
+FROM php:7.2-fpm-alpine
 
 # Install Additional dependencies
 RUN apk update && apk add --no-cache \
     build-base shadow vim curl \
-    git \
     php7 \
     php7-fpm \
     php7-common \
@@ -29,9 +28,7 @@ RUN docker-php-ext-enable pdo_mysql
 WORKDIR /var/www
 
 RUN php -r "copy('https://getcomposer.org/installer', '/tmp/composer-setup.php');"
-RUN php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
-
-# --version=1.8.0
+RUN php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer --version=1.10.1
 
 COPY ./app .
 RUN composer install

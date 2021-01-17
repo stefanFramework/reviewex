@@ -10,14 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-$webNamespace = 'Controllers';
 
-Route::get('/', [
-    'as' => 'home', 
-    'uses' => $webNamespace . '\HomeController@index'
-]);
+Route::get('/home', function () {
+    return view('welcome');
+})->name('home');
 
-Route::get('/messages/{id}',[
-    'as' => 'web.messages' , 
-    'uses' => $webNamespace . '\MessagesController@index'
-]);
+Route::get('/login', 'LoginController@index')->name('login');
