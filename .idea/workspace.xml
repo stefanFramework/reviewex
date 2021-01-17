@@ -2,62 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7f50b177-49f9-474e-bb5e-97a02d7c924a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile.web" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile.web" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/app/.env.example" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/Domain/Models/Country.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/Domain/Models/PhoneLine.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/Domain/Models/PhoneLineMessage.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/Domain/Models/SystemSetting.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/Domain/Repositories/PhoneLineRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/Domain/Repositories/RepositoryInterfaces/IPhoneLineRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/Exceptions/Handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/app/Exceptions/Handler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/Http/Api/Controllers/PhoneLineMessagesController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/Http/Api/Exceptions/ValidationException.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/Http/Api/Middleware/Authenticate.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/Http/Api/Services/AuthenticationService.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/Http/Controllers/Auth/ConfirmPasswordController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/Http/Controllers/Auth/ForgotPasswordController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/Http/Controllers/Auth/ResetPasswordController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/Http/Controllers/Auth/VerificationController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/Http/Controllers/HomeController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/Http/Controllers/MessagesController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/Http/Front/ViewModels/PhoneLineMessageViewModel.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/Http/Front/ViewModels/PhoneLineViewModel.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/Providers/RepositoryServiceProvider.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/app/Providers/RouteServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/app/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/filesystems.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/filesystems.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/logging.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/logging.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/session.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/session.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/database/factories/UserFactory.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/database/migrations/2020_07_04_184648_create_countries_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/database/migrations/2020_07_04_185616_create_phone_lines_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/database/migrations/2020_07_04_190511_create_phone_line_messages_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/database/migrations/2020_07_04_191128_create_system_settings_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/database/migrations/2020_07_04_191643_add_foreign_keys_to_phone_lines_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/database/migrations/2020_07_04_194157_add_foreign_keys_to_phone_line_messages_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/database/seeds/CountriesTableSeeder.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/database/seeds/PhoneLineMessagesTableSeeder.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/database/seeds/PhoneLinesTableSeeder.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/database/seeds/SystemSettingsTableSeeder.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/phpunit.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/resources/lang/en/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/resources/lang/en/validation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/resources/views/home.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/resources/views/messages.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/data/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +37,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1610924861319</updated>
-      <workItem from="1610924863850" duration="1361000" />
+      <workItem from="1610924863850" duration="1499000" />
     </task>
     <servers />
   </component>
