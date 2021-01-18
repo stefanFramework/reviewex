@@ -3,9 +3,8 @@
 *.bak
 .DS_Store
 docker-compose.yml
-mysql/data/*
-!mysql/data/.gitkeep
-!mysql/initial_dump/*
+db/data/*
+!db/data/.gitkeep
 
 /vendor/
 node_modules/
