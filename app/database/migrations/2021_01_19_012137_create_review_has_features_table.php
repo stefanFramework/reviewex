@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddForeignKeysToQuestionnairesTable extends Migration
+class CreateReviewHasFeaturesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddForeignKeysToQuestionnairesTable extends Migration
      */
     public function up()
     {
-        Schema::table('questionnaires', function (Blueprint $table) {
-            $table->foreign('user_id')->references('id')->on('users');
+        Schema::create('review_has_features', function (Blueprint $table) {
+            $table->integer('review_id')->unsigned();
+            $table->integer('feature_id')->unsigned();
         });
     }
 
@@ -25,8 +26,6 @@ class AddForeignKeysToQuestionnairesTable extends Migration
      */
     public function down()
     {
-        Schema::table('questionnaires', function (Blueprint $table) {
-            $table->dropForeign(['user_id']);
-        });
+        Schema::dropIfExists('review_has_features');
     }
 }

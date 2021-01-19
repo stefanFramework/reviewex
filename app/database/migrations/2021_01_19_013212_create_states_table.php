@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQuestionnaireExecutionsTable extends Migration
+class CreateStatesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateQuestionnaireExecutionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('questionnaire_executions', function (Blueprint $table) {
+        Schema::create('states', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('questionnaire_id')->unsigned();
-            $table->integer('user_id')->unsigned();
-            $table->timestamps();
-            $table->softDeletes();
+            $table->string('name');
+            $table->integer('country_id')->unsigned();
         });
     }
 
@@ -29,6 +27,6 @@ class CreateQuestionnaireExecutionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('questionnaire_executions');
+        Schema::dropIfExists('states');
     }
 }

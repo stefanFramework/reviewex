@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddForeignKeysToChoicesTable extends Migration
+class CreateBusinessSectorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddForeignKeysToChoicesTable extends Migration
      */
     public function up()
     {
-        Schema::table('choices', function (Blueprint $table) {
-            $table->foreign('question_id')->references('id')->on('questions');
+        Schema::create('business_sectors', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -25,8 +28,6 @@ class AddForeignKeysToChoicesTable extends Migration
      */
     public function down()
     {
-        Schema::table('choices', function (Blueprint $table) {
-            $table->dropForeign(['question_id']);
-        });
+        Schema::dropIfExists('business_sectors');
     }
 }

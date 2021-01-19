@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQuestionnairesTable extends Migration
+class CreateSystemSettingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateQuestionnairesTable extends Migration
      */
     public function up()
     {
-        Schema::create('questionnaires', function (Blueprint $table) {
+        Schema::create('system_settings', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title', 255);
-            $table->string('description', 255);
-            $table->string('hash');
-            $table->integer('user_id')->unsigned();
+            $table->string('key');
+            $table->string('value');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -31,6 +29,6 @@ class CreateQuestionnairesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('questionnaires');
+        Schema::dropIfExists('system_settings');
     }
 }
