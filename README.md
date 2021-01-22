@@ -16,6 +16,16 @@ sh entrypoint.sh artisan key:generate
 ```
 sh entrypoint.sh start
 ```
+
+4. Run Migrations
+```
+sh entrypoint.sh artisan migrate
+```
+
+5. Seed Database
+```
+sh entrypoint.sh artisan db:seed
+```
   
 ### Basic Usage
   
