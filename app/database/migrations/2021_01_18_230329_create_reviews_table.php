@@ -20,7 +20,7 @@ class CreateReviewsTable extends Migration
             $table->text('text')->nullable();
             $table->integer('score')->nullable()->default(0);
             $table->integer('company_id')->unsigned();
-            $table->integer('reviewed_by')->unsigned();
+            $table->integer('reviewed_by')->nullable()->unsigned();
 
             $table->timestamps();
             $table->softDeletes();

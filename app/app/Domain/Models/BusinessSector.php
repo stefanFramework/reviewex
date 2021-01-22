@@ -3,19 +3,16 @@
 
 namespace App\Domain\Models;
 
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class User extends Model
+class BusinessSector extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'users';
+    protected $table = 'business_sectors';
 
     protected $dates = ['deleted_at'];
-
-    public function isActive() {
-        return $this->is_active;
-    }
 
 }
