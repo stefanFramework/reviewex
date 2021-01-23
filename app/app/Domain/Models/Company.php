@@ -3,6 +3,7 @@
 
 namespace App\Domain\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -50,5 +51,11 @@ class Company extends Model
         $this->company_status = CompanyStatus::published();
         $this->reviewer()->associate($user);
         $this->save();
+    }
+
+
+    public function scopeFilterByName(Builder $query, string $name): Builder
+    {
+        return $query->where('companies.name', 'like', '%' . $name . '%');
     }
 }

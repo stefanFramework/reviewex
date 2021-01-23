@@ -6,6 +6,7 @@ namespace App\Domain\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Builder;
 
 class Review extends Model
 {
@@ -57,4 +58,15 @@ class Review extends Model
         $this->reviewer()->associate($user);
         $this->save();
     }
+
+    public function scopeFilterByCompanyId(Builder $query, int $companyId): Builder
+    {
+        return $query->where('reviews.company_id', $companyId);
+    }
+
+    public function scopeFilterByReviewStatusId(Builder $query, string $reviewStatusId): Builder
+    {
+        return $query->where('reviews.review_status_id', $reviewStatusId);
+    }
+
 }
