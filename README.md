@@ -6,23 +6,33 @@
 ```
 sh entrypoint.sh build 
 ```
-  
-2. Create Application Key
+
+2. Start docker containers
+```
+docker-compose up
+```
+
+3. Create vendor folders
+```
+sh entrypoint.sh composer install 
+```
+
+4. Create Application Key
 ```
 sh entrypoint.sh artisan key:generate 
 ```
   
-3. Run application
+5. Run application
 ```
 sh entrypoint.sh start
 ```
 
-4. Run Migrations
+6. Run Migrations
 ```
 sh entrypoint.sh artisan migrate
 ```
 
-5. Seed Database
+7. Seed Database
 ```
 sh entrypoint.sh artisan db:seed
 ```
