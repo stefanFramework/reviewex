@@ -9,7 +9,7 @@ sh entrypoint.sh build
 
 2. Start docker containers
 ```
-docker-compose up
+docker-compose up -d
 ```
 
 3. Create vendor folders
@@ -25,6 +25,41 @@ sh entrypoint.sh artisan key:generate
 5. Run application
 ```
 sh entrypoint.sh start
+```
+
+5. Crear Stringlength
+```
+cat > ./app/app/Providers/AppServiceProvider.php <<'EOF'
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema;
+
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+    }
+
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        Schema::defaultStringLength(191);
+    }
+}
+EOF
 ```
 
 6. Run Migrations
