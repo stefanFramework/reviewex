@@ -3,10 +3,10 @@
 
 namespace App\Http\Controllers;
 
-
+use Illuminate\Support\Facades\Redirect;
+use Throwable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
-
 
 
 class LoginController extends Controller
@@ -20,7 +20,19 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        $data = $request->all();
-        echo json_encode($data);
+        try {
+            $data = $request->all();
+            $this->validate($data);
+
+
+            echo json_encode($data);
+        } catch(Throwable $ex) {
+            Redirect::back()->withErrors($ex);
+        }
+    }
+
+    private function validate(array $data)
+    {
+        return;
     }
 }
