@@ -38,6 +38,23 @@ abstract class BaseRepository
         return $query->first();
     }
 
+    public function getFirst(
+        array $fields = [],
+        array $with = [],
+        array $filters = [],
+        ?string $sortBy = null,
+        ?string $sortSense = null
+    ): ?Model
+    {
+        return $this->all(
+            $fields,
+            $with,
+            $filters,
+            $sortBy,
+            $sortSense,
+        )->first();
+    }
+
     public function getAll(
         array $fields = [],
         array $with = [],

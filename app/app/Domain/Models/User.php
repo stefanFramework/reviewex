@@ -3,6 +3,7 @@
 
 namespace App\Domain\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -16,6 +17,11 @@ class User extends Model
 
     public function isActive() {
         return $this->is_active;
+    }
+
+    public function scopeFilterByEmail(Builder $query, string $email)
+    {
+        return $query->where('email', $email);
     }
 
 }

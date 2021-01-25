@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backoffice\HomeController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,5 +32,10 @@ Route::prefix('backoffice')->group(function () {
     Route::post('/login', [
         'as' => 'backoffice.login',
         'uses' => LoginController::class . '@login'
+    ]);
+
+    Route::get('/home', [
+        'as' => 'backoffice.home',
+        'uses' => HomeController::class . '@index'
     ]);
 });

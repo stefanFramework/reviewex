@@ -11,6 +11,10 @@
         <input type="password" name="password" placeholder="Password">
         <hr>
         <input type="submit" name="submit" value="Login">
+        <br><br>
+        @if($errors->any())
+            <span><b>{{$errors->first()}}</b></span>
+        @endif
     </form>
 </body>
 </html>

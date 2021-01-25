@@ -27,41 +27,6 @@ sh entrypoint.sh artisan key:generate
 sh entrypoint.sh start
 ```
 
-5. Crear Stringlength
-```
-cat > ./app/app/Providers/AppServiceProvider.php <<'EOF'
-<?php
-
-namespace App\Providers;
-
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Schema;
-
-class AppServiceProvider extends ServiceProvider
-{
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
-    }
-
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        Schema::defaultStringLength(191);
-    }
-}
-EOF
-```
-
 6. Run Migrations
 ```
 sh entrypoint.sh artisan migrate
