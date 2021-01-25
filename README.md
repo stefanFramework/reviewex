@@ -9,7 +9,7 @@ sh entrypoint.sh build
 
 2. Start docker containers
 ```
-docker-compose up -d
+sh entrypoint.sh start
 ```
 
 3. Create vendor folders
@@ -40,5 +40,5 @@ sh entrypoint.sh artisan db:seed
 ### Basic Usage
   
 ```
-http:localhost:7085/home
+http:localhost:7085/
 ```
