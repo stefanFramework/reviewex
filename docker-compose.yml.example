@@ -6,7 +6,8 @@ services:
       dockerfile: Dockerfile.nginx
     container_name: reviewex_server
     volumes:
-        - ./nginx:/var/www
+        - ./nginx/conf.d:/etc/nginx/conf.d/
+        - ./app:/var/www
     ports:
         - "7085:80"
     links:
