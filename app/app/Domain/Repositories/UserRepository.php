@@ -3,8 +3,6 @@
 
 namespace App\Domain\Repositories;
 
-
-use App\Domain\Models\CompanyStatus;
 use App\Domain\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -15,7 +13,8 @@ class UserRepository extends BaseRepository
     protected string $model = User::class;
 
     protected array $validFilters = [
-        'email' => 'appendFilterByEmail'
+        'email' => 'appendFilterByEmail',
+        'active' => 'appendFilterByActive'
     ];
 
     public function getByEmail(
@@ -26,7 +25,7 @@ class UserRepository extends BaseRepository
     ): ?Model
     {
         $filters['email'] = $email;
-        $filters['is_active'] = true;
+        $filters['active'] = true;
 
         return $this->getFirst(
             $fields,
@@ -38,5 +37,10 @@ class UserRepository extends BaseRepository
     protected function appendFilterByEmail(Builder $query, string $email)
     {
         $query->filterByEmail($email);
+    }
+
+    protected function appendFilterByActive(Builder $query, bool $status)
+    {
+        $query->filterByActive($status);
     }
 }

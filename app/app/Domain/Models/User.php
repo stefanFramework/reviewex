@@ -21,7 +21,12 @@ class User extends Model
 
     public function scopeFilterByEmail(Builder $query, string $email)
     {
-        return $query->where('email', $email);
+        return $query->where('email', '=' , $email);
+    }
+
+    public function scopeFilterByActive(Builder $query, bool $status)
+    {
+        return $query->where('is_active', '=', $status);
     }
 
 }

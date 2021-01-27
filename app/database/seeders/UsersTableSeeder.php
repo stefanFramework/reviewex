@@ -11,7 +11,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         DB::table($this->table)->insert([
-            'user_name' => 'cesarcappetto@gmail.com',
+            'user_name' => 'Cesar',
             'password' => '$2y$10$.mfnyJTDGKrNx599Z4/jwefKPhl.NN8vDPqtsB5sUgWLXtHlf3vM2', // admin
             'email' => 'cesarcappetto@gmail.com',
             'first_name' => 'Cesar',
@@ -22,7 +22,7 @@ class UsersTableSeeder extends Seeder
         ]);
 
         DB::table($this->table)->insert([
-            'user_name' => 'fede333lago@gmail.com',
+            'user_name' => 'Fede',
             'password' => '$2y$10$.mfnyJTDGKrNx599Z4/jwefKPhl.NN8vDPqtsB5sUgWLXtHlf3vM2', // admin
             'email' => 'fede333lago@gmail.com',
             'first_name' => 'Federico',

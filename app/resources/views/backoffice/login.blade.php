@@ -1,4 +1,4 @@
-@extends('backoffice.layout')
+@extends('backoffice.layouts.main_login')
 
 @section('content')
     <div class="modal fade show" id="loginModal" tabindex="-1" style="display: block;">
