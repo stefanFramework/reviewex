@@ -7,7 +7,7 @@
                 <div class="card card-plain">
                     <div class="modal-header">
                         <div class="card-header card-header-primary text-center">
-                            <h4 class="card-title">Log in</h4>
+                            <h4 class="card-title">{{ Lang::get('backoffice.login_form.title') }}</h4>
                         </div>
                     </div>
                     <div class="modal-body">
@@ -24,7 +24,7 @@
                                         <div class="input-group-prepend">
                                             <div class="input-group-text"><i class="material-icons">email</i></div>
                                         </div>
-                                        <input type="text" name="email" class="form-control" placeholder="Email...">
+                                        <input type="text" name="email" class="form-control" placeholder="{{ Lang::get('backoffice.login_form.email') }}">
                                     </div>
                                 </div>
 
@@ -33,7 +33,7 @@
                                         <div class="input-group-prepend">
                                             <div class="input-group-text"><i class="material-icons">lock_outline</i></div>
                                         </div>
-                                        <input type="password" id="password" name="password" placeholder="Password..." class="form-control">
+                                        <input type="password" id="password" name="password" placeholder="{{ Lang::get('backoffice.login_form.email') }}" class="form-control">
                                     </div>
                                 </div>
                             </div>
