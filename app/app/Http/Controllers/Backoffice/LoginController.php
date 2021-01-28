@@ -3,16 +3,18 @@
 
 namespace App\Http\Controllers\Backoffice;
 
-use Exception;
 use Throwable;
 
-use App\Utils\Logger;
+use App\Http\Records\UserRecord;
 use App\Http\Controllers\Controller;
+use App\Http\Entities\SessionElementKey;
+use App\Http\Services\Backoffice\AuthenticationService;
+
+use App\Utils\Logger;
 use App\Exceptions\ExceptionFormatter;
 use App\Domain\Repositories\UserRepository;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
@@ -21,22 +23,24 @@ use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
-    const USER_SESSION_KEY = 'user';
 
+    private AuthenticationService $authService;
     private UserRepository $userRepository;
 
-    public function __construct(UserRepository $userRepository)
+
+    public function __construct(
+        UserRepository $userRepository,
+        AuthenticationService $authenticationService
+    )
     {
         $this->userRepository = $userRepository;
+        $this->authService = $authenticationService;
+
         Logger::setDefaultPrefix('backoffice');
     }
 
     public function index()
     {
-        if (Session::has(self::USER_SESSION_KEY)) {
-            return Redirect::route('backoffice.home');
-        }
-
         return View::make('backoffice.login', [
             'loginRoute' => route('backoffice.login')
         ]);
@@ -47,18 +51,16 @@ class LoginController extends Controller
         try {
             $inputData = $request->all();
             $this->validateData($inputData);
-            $user = $this->userRepository->getByEmail($inputData['email']);
 
-            if (empty($user)) {
-                throw new Exception('Invalid User');
-            }
+            $userRecord = new UserRecord();
+            $userRecord->email = $inputData['email'];
+            $userRecord->password = $inputData['password'];
 
-            if (!Hash::check($inputData['password'], $user->password)) {
-                throw new Exception('Invalid Password');
-            }
+            $user = $this->authService->authenticate($userRecord);
 
             $request->session()->regenerate();
-            $request->session()->put(self::USER_SESSION_KEY, $user->user_name);
+            $request->session()->put(SessionElementKey::USER_NAME, $user->user_name);
+            $request->session()->put(SessionElementKey::USER_ID, $user->id);
 
             return Redirect::route('backoffice.home');
 

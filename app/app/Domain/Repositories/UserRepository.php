@@ -17,6 +17,14 @@ class UserRepository extends BaseRepository
         'active' => 'appendFilterByActive'
     ];
 
+    public function getActiveUserById(int $id): ?Model
+    {
+        $fields = [];
+        $with = [];
+        $filters = ['active' => true];
+        return $this->getById($id, $fields, $with, $filters);
+    }
+
     public function getByEmail(
         string $email,
         array $fields = [],

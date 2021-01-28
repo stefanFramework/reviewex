@@ -10,23 +10,31 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', function () {
-    return view('home');
+Route::get('/example', function () {
+    return view('example');
 });
 
-Route::prefix('backoffice')->group(function () {
-    Route::get('/login', [
-        'as' => 'backoffice.login',
-        'uses' => LoginController::class . '@index'
-    ]);
+Route::prefix('/backoffice')->group(function () {
+        Route::get('/login', [
+            'as' => 'backoffice.login',
+            'uses' => LoginController::class . '@index'
+        ]);
 
-    Route::post('/login', [
-        'as' => 'backoffice.login',
-        'uses' => LoginController::class . '@login'
-    ]);
+        Route::post('/login', [
+            'as' => 'backoffice.login',
+            'uses' => LoginController::class . '@login'
+        ]);
 
-    Route::get('/home', [
-        'as' => 'backoffice.home',
-        'uses' => HomeController::class . '@index'
-    ]);
-});
+        Route::get('/logout', [
+            'as' => 'backoffice.logout',
+            'uses' => LoginController::class . '@logout'
+        ]);
+
+        Route::group(['middleware' => 'check.auth'], function () {
+            Route::get('/home', [
+                'as' => 'backoffice.home',
+                'uses' => HomeController::class . '@index'
+            ]);
+        });
+
+    });
