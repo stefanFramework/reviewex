@@ -20,8 +20,8 @@
 <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="white" data-image="{{ asset('backoffice/img/sidebar-1.jpg') }}">
         <div class="logo">
-            <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-                Reviewex
+            <a href="#" class="simple-text logo-normal">
+                {{ Lang::get('backoffice.general.name') }}
             </a>
         </div>
         <div class="sidebar-wrapper">
@@ -33,8 +33,6 @@
         <div class="content">
             <div class="container-fluid">
                 @yield('content')
-                {{--                <div class="row">--}}
-                {{--                </div>--}}
             </div>
         </div>
         @include('backoffice.layouts.footer')

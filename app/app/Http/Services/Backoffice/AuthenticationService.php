@@ -3,6 +3,7 @@
 
 namespace App\Http\Services\Backoffice;
 
+use App\Http\Entities\SessionElementKey;
 use Exception;
 
 use App\Domain\Models\User;
@@ -10,6 +11,7 @@ use App\Http\Records\UserRecord;
 use App\Domain\Repositories\UserRepository;
 
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class AuthenticationService
 {
@@ -39,6 +41,18 @@ class AuthenticationService
     {
         $user = $this->userRepository->getActiveUserById($userRecord->id);
         return empty($user) ? false : true;
+    }
+
+    public function getAuthenticatedUser(): UserRecord
+    {
+        $userId = Session::get(SessionElementKey::USER_ID);
+        $user = $this->userRepository->getActiveUserById($userId);
+
+        $userRecord =  new UserRecord();
+        $userRecord->id = $user->id;
+        $userRecord->userName = $user->user_name;
+        $userRecord->email = $user->email;
+        return $userRecord;
     }
 
 }

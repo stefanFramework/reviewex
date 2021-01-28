@@ -34,6 +34,21 @@ class CompanyRepository extends BaseRepository
         );
     }
 
+    public function getAllPending(
+        $fields = [],
+        $with=[],
+        $filters = []
+    ): Collection
+    {
+        $filters['company_status_id'] = CompanyStatus::pending()->getId();
+
+        return $this->getAll(
+            $fields,
+            $with,
+            $filters
+        );
+    }
+
     protected function appendFilterByName(Builder $query, string $name)
     {
         $query->filterByName($name);

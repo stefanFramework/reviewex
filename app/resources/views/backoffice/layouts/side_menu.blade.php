@@ -1,26 +1,26 @@
 <ul class="nav">
     <li class="nav-item active  ">
-        <a class="nav-link" href="./dashboard.html">
+        <a class="nav-link" href="{{ route('backoffice.home') }}">
             <i class="material-icons">accessible_forward</i>
-            <p>Home</p>
+            <p>{{ Lang::get('backoffice.general.home') }}</p>
         </a>
     </li>
     <li class="nav-item ">
-        <a class="nav-link" href="./user.html">
+        <a class="nav-link" href="#">
             <i class="material-icons">business</i>
-            <p>Companies to review</p>
+            <p>{{ Lang::get('backoffice.home_form.companies_to_validate') }}</p>
         </a>
     </li>
     <li class="nav-item ">
-        <a class="nav-link" href="./user.html">
+        <a class="nav-link" href="#">
             <i class="material-icons">task</i>
-            <p>Reviews to validate</p>
+            <p>{{ Lang::get('backoffice.home_form.reviews_to_validate') }}</p>
         </a>
     </li>
     <li class="nav-item ">
-        <a class="nav-link" href="./user.html">
+        <a class="nav-link" href="{{ route('backoffice.logout') }}">
             <i class="material-icons">power_settings_new</i>
-            <p>Logout</p>
+            <p>{{ Lang::get('backoffice.general.logout') }}</p>
         </a>
     </li>
 </ul>

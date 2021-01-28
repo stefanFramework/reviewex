@@ -9,12 +9,13 @@
                     </div>
                     <p class="card-category"></p>
                     <h3 class="card-title">
-                        Companies to Review
+                        {{ Lang::get('backoffice.home_form.companies_to_validate') }}
                     </h3>
                 </div>
                 <div class="card-footer">
                     <div class="stats">
-                        <i class="material-icons">update</i> 5 Pendientes
+                        <i class="material-icons">update</i>
+                        {{ Lang::get('backoffice.home_form.amount_pending', ['number' => $companiesPending]) }}
                     </div>
                 </div>
             </div>
@@ -27,12 +28,13 @@
                     </div>
                     <p class="card-category"></p>
                     <h3 class="card-title">
-                        Reviewes to validate
+                        {{ Lang::get('backoffice.home_form.reviews_to_validate') }}
                     </h3>
                 </div>
                 <div class="card-footer">
                     <div class="stats">
-                        <i class="material-icons">update</i> 5 Pendientes
+                        <i class="material-icons">update</i>
+                        {{ Lang::get('backoffice.home_form.amount_pending', ['number' => $reviewsPending]) }}
                     </div>
                 </div>
             </div>
@@ -47,7 +49,7 @@
                     </div>
                     <p class="card-category"></p>
                     <h3 class="card-title">
-                        Settings
+                        {{ Lang::get('backoffice.home_form.settings') }}
                     </h3>
                 </div>
                 <div class="card-footer">

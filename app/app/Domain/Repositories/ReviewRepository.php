@@ -40,6 +40,21 @@ class ReviewRepository extends BaseRepository
         );
     }
 
+    public function getAllPending(
+        $fields = [],
+        $with=[],
+        $filters = []
+    ): Collection
+    {
+        $filters['review_status_id'] = ReviewStatus::pending()->getId();
+
+        return $this->getAll(
+            $fields,
+            $with,
+            $filters
+        );
+    }
+
     protected function appendFilterByCompanyId(Builder $query, int $companyId): self
     {
         $query->filterByCompanyId($companyId);
