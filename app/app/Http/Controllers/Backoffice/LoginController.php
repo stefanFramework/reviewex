@@ -63,8 +63,19 @@ class LoginController extends Controller
             return Redirect::route('backoffice.home');
 
         } catch(Throwable $ex) {
-            Logger::error('invalid_user', ['error' => ExceptionFormatter::format($ex)]);
+            Logger::error('login_error', ['error' => ExceptionFormatter::format($ex)]);
             return Redirect::back()->withErrors(['Invalid User']);
+        }
+    }
+
+    public function logout()
+    {
+        try {
+            Session::flush();
+        } catch(Throwable $ex) {
+            Logger::error('log_out_error', ['error' => ExceptionFormatter::format($ex)]);
+        } finally {
+            return Redirect::route('backoffice.login');
         }
     }
 
