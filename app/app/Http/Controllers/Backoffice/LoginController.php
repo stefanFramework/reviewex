@@ -5,9 +5,7 @@ namespace App\Http\Controllers\Backoffice;
 
 use Throwable;
 
-use App\Http\Records\UserRecord;
 use App\Http\Controllers\Controller;
-use App\Http\Entities\SessionElementKey;
 use App\Http\Services\Backoffice\AuthenticationService;
 
 use App\Utils\Logger;
@@ -15,18 +13,16 @@ use App\Exceptions\ExceptionFormatter;
 use App\Domain\Repositories\UserRepository;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\View;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
-
     private AuthenticationService $authService;
     private UserRepository $userRepository;
-
 
     public function __construct(
         UserRepository $userRepository,
@@ -51,29 +47,18 @@ class LoginController extends Controller
         try {
             $inputData = $request->all();
             $this->validateData($inputData);
-
-            $userRecord = new UserRecord();
-            $userRecord->email = $inputData['email'];
-            $userRecord->password = $inputData['password'];
-
-            $user = $this->authService->authenticate($userRecord);
-
-            $request->session()->regenerate();
-            $request->session()->put(SessionElementKey::USER_NAME, $user->user_name);
-            $request->session()->put(SessionElementKey::USER_ID, $user->id);
-
+            $this->authService->authenticate($inputData['email'], $inputData['password']);
             return Redirect::route('backoffice.home');
-
         } catch(Throwable $ex) {
             Logger::error('login_error', ['error' => ExceptionFormatter::format($ex)]);
-            return Redirect::back()->withErrors(['Invalid User']);
+            return Redirect::back()->withErrors([Lang::get('backoffice.errors.invalid_user')]);
         }
     }
 
     public function logout()
     {
         try {
-            Session::flush();
+            $this->authService->removeAuthenticatedUser();
         } catch(Throwable $ex) {
             Logger::error('log_out_error', ['error' => ExceptionFormatter::format($ex)]);
         } finally {

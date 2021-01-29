@@ -23,14 +23,9 @@ class CheckAuthentication
 
     public function handle(Request $request, Closure $next)
     {
-        if (!Session::has(SessionElementKey::USER_ID)) {
-            return Redirect::route('backoffice.login');
-        }
+        $authenticatedUser = $this->authService->getAuthenticatedUser();
 
-        $userRecord = new UserRecord();
-        $userRecord->id = Session::get(SessionElementKey::USER_ID);
-
-        if (!$this->authService->isValidUser($userRecord)) {
+        if (empty($authenticatedUser)) {
             return Redirect::route('backoffice.login');
         }
 

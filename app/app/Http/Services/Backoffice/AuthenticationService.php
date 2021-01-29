@@ -3,11 +3,10 @@
 
 namespace App\Http\Services\Backoffice;
 
-use App\Http\Entities\SessionElementKey;
 use Exception;
 
-use App\Domain\Models\User;
-use App\Http\Records\UserRecord;
+use App\Http\Entities\AuthenticatedUser;
+use App\Http\Entities\SessionElementKey;
 use App\Domain\Repositories\UserRepository;
 
 use Illuminate\Support\Facades\Hash;
@@ -22,37 +21,43 @@ class AuthenticationService
         $this->userRepository = $userRepository;
     }
 
-    public function authenticate(UserRecord $userRecord): User
+    public function authenticate(string $email, string $password): void
     {
-        $user = $this->userRepository->getByEmail($userRecord->email);
+        $user = $this->userRepository->getByEmail($email);
 
         if (empty($user)) {
             throw new Exception('Invalid User');
         }
 
-        if (!Hash::check($userRecord->password, $user->password)) {
+        if (!Hash::check($password, $user->password)) {
             throw new Exception('Invalid Password');
         }
 
-        return $user;
+        Session::flush();
+        Session::put(SessionElementKey::USER_ID, $user->id);
+        Session::put(SessionElementKey::USER_NAME, $user->user_name);
     }
 
-    public function isValidUser(UserRecord $userRecord)
+    public function getAuthenticatedUser(): ?AuthenticatedUser
     {
-        $user = $this->userRepository->getActiveUserById($userRecord->id);
-        return empty($user) ? false : true;
-    }
+        if (!Session::has(SessionElementKey::USER_ID)) {
+            return null;
+        }
 
-    public function getAuthenticatedUser(): UserRecord
-    {
         $userId = Session::get(SessionElementKey::USER_ID);
         $user = $this->userRepository->getActiveUserById($userId);
 
-        $userRecord =  new UserRecord();
-        $userRecord->id = $user->id;
-        $userRecord->userName = $user->user_name;
-        $userRecord->email = $user->email;
-        return $userRecord;
+        $authUser =  new AuthenticatedUser();
+        $authUser->id = $user->id;
+        $authUser->userName = $user->user_name;
+        $authUser->email = $user->email;
+
+        return $authUser;
+    }
+
+    public function removeAuthenticatedUser(): void
+    {
+        Session::flush();
     }
 
 }

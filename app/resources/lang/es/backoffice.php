@@ -17,5 +17,8 @@ return [
         'companies_to_validate' => 'Empresas pendientes de validacion',
         'reviews_to_validate' => 'Calificacion pendiente de validacion',
         'settings' => 'Ajustes',
+    ],
+    'errors' => [
+        'invalid_user' => 'Nombre de Usuario o Contraseña invalidos'
     ]
 ];

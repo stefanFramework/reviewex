@@ -34,9 +34,7 @@ class HomeController extends Controller
     public function index()
     {
         $companies = $this->companyRepository->getAllPending();
-
         $reviews = $this->reviewRepository->getAllPending();
-
         $authUser = $this->authService->getAuthenticatedUser();
 
         $params = [

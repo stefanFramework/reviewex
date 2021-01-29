@@ -17,5 +17,8 @@ return [
         'companies_to_validate' => 'Companies to validate',
         'reviews_to_validate' => 'Reviews to validate',
         'settings' => 'Settings',
+    ],
+    'errors' => [
+        'invalid_user' => 'Invalid User'
     ]
 ];

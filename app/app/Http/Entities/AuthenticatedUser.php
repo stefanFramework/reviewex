@@ -1,10 +1,10 @@
 <?php
 
 
-namespace App\Http\Records;
+namespace App\Http\Entities;
 
 
-class UserRecord
+class AuthenticatedUser
 {
     public int $id;
     public string $userName;
