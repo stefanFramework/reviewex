@@ -12,7 +12,7 @@
         </a>
     </li>
     <li class="nav-item ">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ route('backoffice.reviews') }}">
             <i class="material-icons">task</i>
             <p>{{ Lang::get('backoffice.home_form.reviews_to_validate') }}</p>
         </a>

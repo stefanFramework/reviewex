@@ -3,7 +3,7 @@
 use App\Http\Controllers\Backoffice\HomeController;
 use App\Http\Controllers\Backoffice\LoginController;
 use App\Http\Controllers\Backoffice\CompanyValidationController;
-
+use App\Http\Controllers\Backoffice\ReviewValidationController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -56,6 +56,23 @@ Route::prefix('/backoffice')->group(function () {
                 Route::get('/{id}/dismiss', [
                     'as' => 'backoffice.companies.dismiss',
                     'uses' => CompanyValidationController::class . '@dismiss'
+                ]);
+            });
+
+            Route::prefix('/reviews')->group(function () {
+                Route::get('/', [
+                    'as' => 'backoffice.reviews',
+                    'uses' => ReviewValidationController::class . '@index'
+                ]);
+
+                Route::get('/{id}', [
+                    'as' => 'backoffice.reviews.update',
+                    'uses' => ReviewValidationController::class . '@update'
+                ]);
+
+                Route::get('/{id}/dismiss', [
+                    'as' => 'backoffice.reviews.dismiss',
+                    'uses' => ReviewValidationController::class . '@dismiss'
                 ]);
             });
 

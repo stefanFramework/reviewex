@@ -30,6 +30,14 @@ return [
         'business_sector_title' => 'Sector',
         'city_title' => 'Ciudad',
     ],
+    'reviews_list_form' => [
+        'title' => 'Revisiones',
+        'sub_title' => 'Revisiones pendinetes de validacion',
+        'title_title' => 'Titulo',
+        'text_title' => 'Texto',
+        'features_title' => 'Caracteristicas',
+        'company_title' => 'Empresa',
+    ],
     'login_form' => [
         'title' => 'Login',
         'email' => 'Email',

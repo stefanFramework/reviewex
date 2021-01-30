@@ -30,6 +30,14 @@ return [
         'business_sector_title' => 'Business Sector',
         'city_title' => 'City',
     ],
+    'reviews_list_form' => [
+        'title' => 'Reviews',
+        'sub_title' => 'Reviews pending validation',
+        'title_title' => 'Title',
+        'text_title' => 'Text',
+        'features_title' => 'Features',
+        'company_title' => 'Company',
+    ],
     'login_form' => [
         'title' => 'Login',
         'email' => 'Email',

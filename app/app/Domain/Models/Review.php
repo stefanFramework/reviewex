@@ -3,7 +3,6 @@
 
 namespace App\Domain\Models;
 
-
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Builder;
@@ -49,13 +48,20 @@ class Review extends Model
 
     public function setReviewStatusIdAttribute(ReviewStatus $reviewStatus)
     {
-        $this->review_status_id = $reviewStatus->getId();
+        $this->attributes['review_status_id'] = $reviewStatus->getId();
     }
 
     public function markAsPublished(User $user): void
     {
         $this->review_status_id = ReviewStatus::published();
         $this->reviewer()->associate($user);
+        $this->save();
+    }
+
+    public function discard(User $user): void
+    {
+        $this->reviewer()->associate($user);
+        $this->delete();
         $this->save();
     }
 
