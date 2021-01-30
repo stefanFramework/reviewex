@@ -8,14 +8,36 @@ use App\Domain\Models\Company;
 use App\Domain\Models\CompanyStatus;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Contracts\Pagination\Paginator;
 
 class CompanyRepository extends BaseRepository
 {
     protected string $model = Company::class;
 
     protected array $validFilters = [
-        'name' => 'appendFilterByName'
+        'name' => 'appendFilterByName',
+        'company_status_id' => 'appendFilterByCompanyStatusId'
     ];
+
+    public function getForListing(
+        array $filters = [],
+        string $sortBy = '',
+        string $sortSense = '',
+        int $limit = self::DEFAULT_LIMIT
+    ): Paginator
+    {
+        $fields = [];
+        $with = [];
+
+        return $this->getAllPaginated(
+            $fields,
+            $with,
+            $filters,
+            $sortBy,
+            $sortSense,
+            $limit
+        );
+    }
 
     public function getByTextName(
         string $textName,
@@ -52,5 +74,10 @@ class CompanyRepository extends BaseRepository
     protected function appendFilterByName(Builder $query, string $name)
     {
         $query->filterByName($name);
+    }
+
+    protected function appendFilterByCompanyStatusId(Builder $query, string $statusId)
+    {
+        $query->filterByCompanyStatusId($statusId);
     }
 }

@@ -58,4 +58,9 @@ class Company extends Model
     {
         return $query->where('companies.name', 'like', '%' . $name . '%');
     }
+
+    public function scopeFilterByCompanyStatusId(Builder $query, string $statusId): Builder
+    {
+        return $query->where('companies.company_status_id', '=',  $statusId);
+    }
 }

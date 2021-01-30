@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backoffice\HomeController;
 use App\Http\Controllers\Backoffice\LoginController;
+use App\Http\Controllers\Backoffice\CompanyValidationController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -35,6 +36,24 @@ Route::prefix('/backoffice')->group(function () {
                 'as' => 'backoffice.home',
                 'uses' => HomeController::class . '@index'
             ]);
+
+            Route::prefix('/companies')->group(function () {
+                Route::get('/', [
+                    'as' => 'backoffice.companies',
+                    'uses' => CompanyValidationController::class . '@index'
+                ]);
+
+                Route::get('/{id}', [
+                    'as' => 'backoffice.companies.view',
+                    'uses' => CompanyValidationController::class . '@view'
+                ]);
+
+                Route::post('/{id}', [
+                    'as' => 'backoffice.companies.update',
+                    'uses' => CompanyValidationController::class . '@update'
+                ]);
+            });
+
         });
 
     });
