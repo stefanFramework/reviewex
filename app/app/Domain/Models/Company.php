@@ -43,16 +43,22 @@ class Company extends Model
 
     public function setCompanyStatusIdAttribute(CompanyStatus $companyStatus): void
     {
-        $this->company_status_id = $companyStatus->getId();
+        $this->attributes['company_status_id'] = $companyStatus->getId();
     }
 
-    public function markAsPublished(User $user)
+    public function markAsPublished(User $user): void
     {
-        $this->company_status = CompanyStatus::published();
+        $this->company_status_id = CompanyStatus::published();
         $this->reviewer()->associate($user);
         $this->save();
     }
 
+    public function discard(User $user): void
+    {
+        $this->reviewer()->associate($user);
+        $this->delete();
+        $this->save();
+    }
 
     public function scopeFilterByName(Builder $query, string $name): Builder
     {

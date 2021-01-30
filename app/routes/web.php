@@ -52,6 +52,11 @@ Route::prefix('/backoffice')->group(function () {
                     'as' => 'backoffice.companies.update',
                     'uses' => CompanyValidationController::class . '@update'
                 ]);
+
+                Route::get('/{id}/dismiss', [
+                    'as' => 'backoffice.companies.dismiss',
+                    'uses' => CompanyValidationController::class . '@dismiss'
+                ]);
             });
 
         });

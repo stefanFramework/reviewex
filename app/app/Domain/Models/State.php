@@ -10,7 +10,7 @@ class State extends Model
 {
     protected $table = 'states';
 
-    public function countries()
+    public function country()
     {
         return $this->belongsTo(Country::class);
     }

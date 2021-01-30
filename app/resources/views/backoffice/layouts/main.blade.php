@@ -68,5 +68,6 @@
 <script src="{{ asset('backoffice/js/plugins/chartist.min.js') }}"></script>
 <script src="{{ asset('backoffice/js/plugins/bootstrap-notify.js') }}"></script>
 <script src="{{ asset('backoffice/js/material-dashboard.js?v=2.1.2') }}"></script>
+@yield('javascript')
 </body>
 </html>

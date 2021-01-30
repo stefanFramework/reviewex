@@ -33,7 +33,7 @@
                                         <div class="input-group-prepend">
                                             <div class="input-group-text"><i class="material-icons">lock_outline</i></div>
                                         </div>
-                                        <input type="password" id="password" name="password" placeholder="{{ Lang::get('backoffice.login_form.email') }}" class="form-control">
+                                        <input type="password" id="password" name="password" placeholder="{{ Lang::get('backoffice.login_form.password') }}" class="form-control">
                                     </div>
                                 </div>
                             </div>

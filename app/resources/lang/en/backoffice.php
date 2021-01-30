@@ -10,6 +10,18 @@ return [
         'previous' => 'Previous',
         'next' => 'Next',
         'actions' => 'Actions',
+        'validate_and_publish' => 'Validate and Publish',
+        'dismiss' => 'Dismiss',
+    ],
+    'company_validation_form' => [
+        'title' => 'Validate Company',
+        'sub_title' => 'Verify the existence of the company and the veracity of the information entered',
+        'name_title' => 'Name',
+        'business_sector_title' => 'Business Sector',
+        'website_title' => 'Website',
+        'state_title' => 'State',
+        'country_title' => 'Country',
+        'city_title' => 'City',
     ],
     'companies_list_form' => [
         'title' => 'Companies',
@@ -30,6 +42,7 @@ return [
         'settings' => 'Settings',
     ],
     'errors' => [
-        'invalid_user' => 'Invalid User'
+        'invalid_user' => 'Invalid User',
+        'invalid_company' => 'Invalid company',
     ]
 ];

@@ -10,6 +10,18 @@ return [
         'previous' => 'Anterior',
         'next' => 'Siguiente',
         'actions' => 'Acciones',
+        'validate_and_publish' => 'Validar y Publicar',
+        'dismiss' => 'Descartar',
+    ],
+    'company_validation_form' => [
+        'title' => 'Validar Empresa',
+        'sub_title' => 'Verificar la existencia de la empresa y la veracidad de la informacion ingresada',
+        'name_title' => 'Nombre',
+        'business_sector_title' => 'Sector',
+        'website_title' => 'Website',
+        'state_title' => 'Estado/Provincia',
+        'country_title' => 'Pais',
+        'city_title' => 'Ciudad',
     ],
     'companies_list_form' => [
         'title' => 'Empresas',
@@ -30,6 +42,7 @@ return [
         'settings' => 'Ajustes',
     ],
     'errors' => [
-        'invalid_user' => 'Nombre de Usuario o Contraseña invalidos'
+        'invalid_user' => 'Nombre de Usuario o Contraseña invalidos',
+        'invalid_company' => 'Empresa no disponible',
     ]
 ];
