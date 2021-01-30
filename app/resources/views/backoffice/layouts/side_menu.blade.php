@@ -18,6 +18,12 @@
         </a>
     </li>
     <li class="nav-item ">
+        <a class="nav-link" href="#">
+            <i class="material-icons">settings</i>
+            <p>{{ Lang::get('backoffice.home_form.settings') }}</p>
+        </a>
+    </li>
+    <li class="nav-item ">
         <a class="nav-link" href="{{ route('backoffice.logout') }}">
             <i class="material-icons">power_settings_new</i>
             <p>{{ Lang::get('backoffice.general.logout') }}</p>
