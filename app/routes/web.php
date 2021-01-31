@@ -1,19 +1,30 @@
 <?php
 
-use App\Http\Controllers\Backoffice\HomeController;
+use App\Http\Controllers\CompanyInformationController;
+use App\Http\Controllers\HomeController;
+
+use App\Http\Controllers\Backoffice\HomeController as BackofficeHomeController;
 use App\Http\Controllers\Backoffice\LoginController;
 use App\Http\Controllers\Backoffice\CompanyValidationController;
 use App\Http\Controllers\Backoffice\ReviewValidationController;
+
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [
+    'as' => 'home',
+    'uses' => HomeController::class . '@index'
+]);
 
-Route::get('/example', function () {
-    return view('example');
-});
+Route::post('/search', [
+    'as' => 'home.search',
+    'uses' => HomeController::class . '@search'
+]);
+
+Route::get('/companies/{code}', [
+    'as' => 'companies.information',
+    'uses' => CompanyInformationController::class . '@view'
+]);
 
 Route::prefix('/backoffice')->group(function () {
         Route::get('/login', [
@@ -34,7 +45,7 @@ Route::prefix('/backoffice')->group(function () {
         Route::group(['middleware' => 'check.auth'], function () {
             Route::get('/home', [
                 'as' => 'backoffice.home',
-                'uses' => HomeController::class . '@index'
+                'uses' => BackofficeHomeController::class . '@index'
             ]);
 
             Route::prefix('/companies')->group(function () {

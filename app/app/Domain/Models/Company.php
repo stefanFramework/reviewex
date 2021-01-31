@@ -3,6 +3,7 @@
 
 namespace App\Domain\Models;
 
+use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -35,6 +36,20 @@ class Company extends Model
         return $this->belongsTo(User::class, 'reviewed_by', 'id');
     }
 
+    public function getSummarizedReviews()
+    {
+        $result = new Collection();
+        $this->reviews->each(function (Review $review) use ($result) {
+            $review->features->each(function (Feature $feature) use ($result) {
+                if (!$result->contains('id', $feature->id)) {
+                    $result->add($feature);
+                }
+            });
+        });
+
+        return $result;
+    }
+
     public function getCompanyStatusIdAttribute(): CompanyStatus
     {
         $statusId = $this->company_status_id;
@@ -58,6 +73,11 @@ class Company extends Model
         $this->reviewer()->associate($user);
         $this->delete();
         $this->save();
+    }
+
+    public function scopeFilterByCode(Builder $query, string $code): Builder
+    {
+        return $query->where('companies.code', '=',  $code);
     }
 
     public function scopeFilterByName(Builder $query, string $name): Builder

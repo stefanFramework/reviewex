@@ -3,9 +3,10 @@
 
 namespace App\Domain\Repositories;
 
-
 use App\Domain\Models\Company;
 use App\Domain\Models\CompanyStatus;
+
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Contracts\Pagination\Paginator;
@@ -15,6 +16,7 @@ class CompanyRepository extends BaseRepository
     protected string $model = Company::class;
 
     protected array $validFilters = [
+        'code' => 'appendFilterByCode',
         'name' => 'appendFilterByName',
         'company_status_id' => 'appendFilterByCompanyStatusId'
     ];
@@ -36,6 +38,23 @@ class CompanyRepository extends BaseRepository
             $sortBy,
             $sortSense,
             $limit
+        );
+    }
+
+    public function getByCode(
+        string $code,
+        array $fields = [],
+        array $with = [],
+        array $filters = []
+    ): ?Model
+    {
+        $filters['code'] = $code;
+        $filters['company_status_id'] = CompanyStatus::published()->getId();
+
+        return $this->getFirst(
+            $fields,
+            $with,
+            $filters
         );
     }
 
@@ -69,6 +88,11 @@ class CompanyRepository extends BaseRepository
             $with,
             $filters
         );
+    }
+
+    protected function appendFilterByCode(Builder $query, string $code)
+    {
+        $query->filterByCode($code);
     }
 
     protected function appendFilterByName(Builder $query, string $name)
