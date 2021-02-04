@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Utils\Logger;
 
-class ApplicationController extends Controller
+abstract class ApplicationController extends Controller
 {
     public function __construct()
     {

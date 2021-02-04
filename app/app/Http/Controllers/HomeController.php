@@ -28,7 +28,7 @@ class HomeController extends ApplicationController
 
     public function index()
     {
-        return View::make('home');
+        return View::make('example');
     }
 
     public function search(Request $request)

@@ -40,6 +40,4 @@ class CompanyInformationController extends ApplicationController
         }
 
     }
-
-
 }

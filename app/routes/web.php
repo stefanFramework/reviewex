@@ -1,13 +1,15 @@
 <?php
 
-use App\Http\Controllers\CompanyInformationController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CompanyInformationController;
+use App\Http\Controllers\CompanyRegistrationController;
 
 use App\Http\Controllers\Backoffice\HomeController as BackofficeHomeController;
 use App\Http\Controllers\Backoffice\LoginController;
 use App\Http\Controllers\Backoffice\CompanyValidationController;
 use App\Http\Controllers\Backoffice\ReviewValidationController;
 
+use App\Http\Controllers\LocationController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -21,10 +23,28 @@ Route::post('/search', [
     'uses' => HomeController::class . '@search'
 ]);
 
-Route::get('/companies/{code}', [
-    'as' => 'companies.information',
-    'uses' => CompanyInformationController::class . '@view'
+Route::get('/location/{countryId}/states', [
+    'as' => 'location.states',
+    'uses' => LocationController::class . '@states'
 ]);
+
+Route::prefix('/companies')->group(function () {
+    Route::get('/register', [
+        'as' => 'companies.register',
+        'uses' => CompanyRegistrationController::class . '@view'
+    ]);
+
+    Route::post('/register', [
+        'as' => 'companies.register',
+        'uses' => CompanyRegistrationController::class . '@register'
+    ]);
+
+    Route::get('/{code}', [
+        'as' => 'companies.information',
+        'uses' => CompanyInformationController::class . '@view'
+    ]);
+});
+
 
 Route::prefix('/backoffice')->group(function () {
         Route::get('/login', [
