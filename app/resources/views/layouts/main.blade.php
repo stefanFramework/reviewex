@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="css/shortcodes/shortcodes.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link rel="stylesheet" type="text/css" href="css/responsive.css" />
+    @yield('style')
 
 </head>
 
