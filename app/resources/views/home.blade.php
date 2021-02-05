@@ -6,16 +6,20 @@
                    id="companies"
                    name="companies"
                    class="form-control"
-                   placeholder="Search your company ...">
+                   placeholder="{{ Lang::get('application.general.search') }}">
             <span id="search-icon" aria-hidden="true" class="input-loading fa "></span>
-            <p style="margin-top: 25px;">
-                asdfasdfasdfsdf
+            <span class="small-text">
+                {!! Lang::get('application.home.search_small_text', ['url' => route('home')]) !!}
+            </span>
+            <p style="margin-top: 50px; margin-bottom: 50px;">
+                {{ Lang::get('application.home.main_content') }}
             </p>
         </div>
         <div class="col-lg-3">
             <div class="sidebar-widget"></div>
         </div>
     </div>
+
 @endsection
 
 @section('style')
@@ -28,8 +32,14 @@
             pointer-events: none;
             font-size: 20px !important;
         }
+        .small-text {
+            position: absolute;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            font-size: 12px;
+        }
     </style>
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
 @endsection
 
 @section('javascript')

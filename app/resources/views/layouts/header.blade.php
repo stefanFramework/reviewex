@@ -34,20 +34,22 @@
                         <div class="col-lg-12 col-md-12">
                             <ul class="menu-logo">
                                 <li>
-                                    <a href="index-01.html"><img id="logo_img" src="images/logo.png" alt="logo"> </a>
+{{--                                    <a href="{{ route('home') }}"><img id="logo_img" src="{{asset('images/logo.png')}}" alt="logo"> </a>--}}
                                 </li>
                             </ul>
                             <div class="menu-bar">
                                 <div class="search-cart">
-                                    <div class="search">
-                                        <a class="search-btn not_click" href="javascript:void(0);"></a>
-                                        <div class="search-box not-click">
-                                            <form action="search.html" method="get">
-                                                <input type="text"  class="not-click form-control" name="search" placeholder="Search.." value="" >
-                                                <button class="search-button" type="submit"> <i class="fa fa-search not-click"></i></button>
-                                            </form>
+                                    @if(\Illuminate\Support\Facades\Route::current()->getName() != 'home')
+                                        <div class="search">
+                                            <a class="search-btn not_click" href="javascript:void(0);"></a>
+                                            <div class="search-box not-click">
+                                                <form action="search.html" method="get">
+                                                    <input type="text"  class="not-click form-control" name="search" placeholder="{{ Lang::get('application.general.search') }}" value="" >
+                                                    <button class="search-button" type="submit"> <i class="fa fa-search not-click"></i></button>
+                                                </form>
+                                            </div>
                                         </div>
-                                    </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -58,13 +60,19 @@
     </div>
 </header>
 
-<section class="page-title bg-overlay-black-60 parallax" data-jarallax='{"speed": 0.6}' style="background-image: url(images/bg/02.jpg);">
+<section class="page-title bg-overlay-black-60 parallax" data-jarallax='{"speed": 0.6}' style="background-image: url({{ asset('images/reviewex.png') }});">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="page-title-name">
-                    <h1>Blog classic right sidebar</h1>
-                    <p>We know the secret of your success</p>
+                    <h1>
+                        <a href="{{ route('home') }}">
+                        {{ Lang::get('application.general.title') }}
+                        </a>
+                    </h1>
+                    <p>
+                        {{ Lang::get('application.general.slogan') }}
+                    </p>
                 </div>
                 {{--                    <ul class="page-breadcrumb">--}}
                 {{--                        <li><a href="#"><i class="fa fa-home"></i> Home</a> <i class="fa fa-angle-double-right"></i></li>--}}
