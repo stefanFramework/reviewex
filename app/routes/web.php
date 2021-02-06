@@ -1,16 +1,16 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\CompanyInformationController;
 use App\Http\Controllers\CompanyRegistrationController;
+use App\Http\Controllers\ReviewRegistrationController;
 
 use App\Http\Controllers\Backoffice\HomeController as BackofficeHomeController;
 use App\Http\Controllers\Backoffice\LoginController;
 use App\Http\Controllers\Backoffice\CompanyValidationController;
 use App\Http\Controllers\Backoffice\ReviewValidationController;
 
-use App\Http\Controllers\LocationController;
-use App\Http\Controllers\ReviewRegistrationController;
 use Illuminate\Support\Facades\Route;
 
 

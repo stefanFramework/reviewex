@@ -9,6 +9,7 @@ return [
         'all_right_reserved' => 'All Rights Reserved',
         'submit' => 'Submit',
         'cancel' => 'Cancel',
+        'back_home' => 'Go Home'
     ],
     'errors' => [
         'general_error' => 'An unknown error has happend',
@@ -46,6 +47,17 @@ return [
             'sidebar_step_3' => 'Lorem ipsum',
             'duplicated_company' => 'The company that you are trying to register already exists in our system',
             'error' => 'Oh! Looks like something went wrong and we couldn\'t register your company :(',
+        ],
+        'success' => [
+            'title' => 'Thank you for your contribution!',
+            'body' => '<strong>:company</strong> was successfully registrated in our system.
+                Now, our team is going to review the information you register, and make it public on the site for enyone to use.
+                We thank you again for participate in this project, and hope to see you soon in our site.
+                Have a nice day!',
+            'after_message' => 'What? Wanna add a review for the company you just registered? Sure! Just click on the button below'
         ]
+    ],
+    'review' => [
+        'create' => 'Create review'
     ]
 ];

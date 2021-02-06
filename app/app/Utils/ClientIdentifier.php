@@ -6,6 +6,11 @@ namespace App\Utils;
 
 class ClientIdentifier
 {
+    private function __construct()
+    {
+
+    }
+
     public static function fromName(string $name): string
     {
         $trimmed = trim($name);
