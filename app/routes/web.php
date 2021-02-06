@@ -10,6 +10,7 @@ use App\Http\Controllers\Backoffice\CompanyValidationController;
 use App\Http\Controllers\Backoffice\ReviewValidationController;
 
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\ReviewRegistrationController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -39,9 +40,26 @@ Route::prefix('/companies')->group(function () {
         'uses' => CompanyRegistrationController::class . '@register'
     ]);
 
+    Route::get('/success', [
+        'as' => 'companies.success',
+        'uses' => CompanyRegistrationController::class . '@confirmationView'
+    ]);
+
     Route::get('/{code}', [
         'as' => 'companies.information',
         'uses' => CompanyInformationController::class . '@view'
+    ]);
+});
+
+Route::prefix('/{code}/reviews')->group(function () {
+    Route::get('/new', [
+        'as' => 'reviews.new',
+        'uses' => ReviewRegistrationController::class . '@view'
+    ]);
+
+    Route::post('/new', [
+        'as' => 'reviews.new',
+        'uses' => ReviewRegistrationController::class . '@create'
     ]);
 });
 

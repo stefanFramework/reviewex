@@ -3,6 +3,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Domain\Models\CompanyStatus;
 use Exception;
 use Illuminate\Support\Facades\View;
 use Throwable;
@@ -24,7 +25,10 @@ class CompanyInformationController extends ApplicationController
     public function view(string $code)
     {
         try {
-            $company = $this->companyRepository->getByCode($code);
+            $company = $this->companyRepository->getByCode(
+                $code,
+                ['company_status_id' => CompanyStatus::published()->getId()]
+            );
 
             if (empty($company)) {
                 throw new Exception('Invalid Company: ' . $code);

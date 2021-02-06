@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('content')
     <div class="row">
-        <div class="col-lg-9">
+        <div class="col-lg-9 col-md-9 col-sm-9">
             <input type="text"
                    id="companies"
                    name="companies"
@@ -9,13 +9,13 @@
                    placeholder="{{ Lang::get('application.general.search') }}">
             <span id="search-icon" aria-hidden="true" class="input-loading fa "></span>
             <span class="small-text">
-                {!! Lang::get('application.home.search_small_text', ['url' => route('home')]) !!}
+                {!! Lang::get('application.home.search_small_text', ['url' => route('companies.register')]) !!}
             </span>
             <p style="margin-top: 50px; margin-bottom: 50px;">
                 {{ Lang::get('application.home.main_content') }}
             </p>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-3 col-md-3 col-sm-3">
             <div class="sidebar-widget"></div>
         </div>
     </div>
@@ -23,22 +23,6 @@
 @endsection
 
 @section('style')
-    <style>
-        .input-loading {
-            position: absolute;
-            top: 15px;
-            right: 30px;
-            text-align: center;
-            pointer-events: none;
-            font-size: 20px !important;
-        }
-        .small-text {
-            position: absolute;
-            margin-top: 5px;
-            margin-bottom: 10px;
-            font-size: 12px;
-        }
-    </style>
     <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
 @endsection
 

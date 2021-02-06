@@ -43,13 +43,12 @@ class CompanyRepository extends BaseRepository
 
     public function getByCode(
         string $code,
+        array $filters = [],
         array $fields = [],
-        array $with = [],
-        array $filters = []
+        array $with = []
     ): ?Model
     {
         $filters['code'] = $code;
-        $filters['company_status_id'] = CompanyStatus::published()->getId();
 
         return $this->getFirst(
             $fields,
