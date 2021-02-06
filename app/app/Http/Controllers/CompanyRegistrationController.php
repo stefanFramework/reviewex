@@ -106,7 +106,7 @@ class CompanyRegistrationController extends ApplicationController
             'countries' => 'required',
             'states' => 'required',
             'city' => 'required',
-            'website' => 'required',
+            'website' => 'required|url',
         ];
 
         $messages = [
@@ -116,6 +116,7 @@ class CompanyRegistrationController extends ApplicationController
             'states.required' => Lang::get('application.errors.required'),
             'city.required' => Lang::get('application.errors.required'),
             'website.required' => Lang::get('application.errors.required'),
+            'website.url' => Lang::get('application.errors.url'),
         ];
 
         $validator = Validator::make($data, $rules, $messages);

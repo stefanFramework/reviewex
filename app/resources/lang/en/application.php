@@ -14,6 +14,7 @@ return [
     'errors' => [
         'general_error' => 'An unknown error has happend',
         'required' => 'This field is required',
+        'url' => 'This field must be a valid url'
     ],
     'metadata' => [
         'title' => 'Reviewex',
