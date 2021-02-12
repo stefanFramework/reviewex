@@ -3,7 +3,6 @@
 
 namespace App\Domain\Repositories;
 
-
 use App\Domain\Models\Review;
 use App\Domain\Models\ReviewStatus;
 use Illuminate\Database\Eloquent\Builder;
@@ -73,6 +72,25 @@ class ReviewRepository extends BaseRepository
             $fields,
             $with,
             $filters
+        );
+    }
+
+    public function getLatest(
+        array $filters = [],
+        string $sortBy = 'score',
+        string $sortSense = 'DESC',
+        int $limit = 5
+    ): Collection
+    {
+        $filters['review_status_id'] = ReviewStatus::published()->getId();
+
+        return $this->getSome(
+            [],
+            [],
+            $filters,
+            $sortBy,
+            $sortSense,
+            $limit
         );
     }
 

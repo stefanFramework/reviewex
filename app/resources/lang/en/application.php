@@ -9,7 +9,11 @@ return [
         'all_right_reserved' => 'All Rights Reserved',
         'submit' => 'Submit',
         'cancel' => 'Cancel',
-        'back_home' => 'Go Home'
+        'back_home' => 'Go Home',
+        'terms_and_conditions' => 'Terms & Conditions',
+        'privacy_policy' => 'Privacy Policy',
+        'follow_social' => 'Follow Us',
+        'donate' => 'Donate',
     ],
     'errors' => [
         'general_error' => 'An unknown error has happend',
@@ -21,7 +25,7 @@ return [
         'keywords' => '',
         'description' => '',
         'author' => '', // Email address
-        'viewport' => 'width=device-width, initial-scale=1, maximum-scale=1'
+        'viewport' => 'width=device-width, initial-scale=1, shrink-to-fit=no'
     ],
     'home' => [
         'register_new_company' => 'Register new company',

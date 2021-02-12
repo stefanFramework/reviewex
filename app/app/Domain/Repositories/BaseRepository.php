@@ -73,6 +73,24 @@ abstract class BaseRepository
         )->get();
     }
 
+    public function getSome(
+        array $fields = [],
+        array $with = [],
+        array $filters = [],
+        ?string $sortBy = null,
+        ?string $sortSense = null,
+        int $limit = self::DEFAULT_LIMIT
+    ): Collection
+    {
+        return $this->all(
+            $fields,
+            $with,
+            $filters,
+            $sortBy,
+            $sortSense,
+        )->limit($limit)->get();
+    }
+
     public function getAllPaginated(
         array $fields = [],
         array $with = [],
