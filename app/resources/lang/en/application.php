@@ -17,6 +17,14 @@ return [
         'companies' => 'Companies',
     ],
     'errors' => [
+        'page_not_found' => 'Page Not Found',
+        'page_not_found_text' => 'The page you were looking for could not be found.',
+        'error_404' => 'Error 404',
+        '404' => '404',
+        'internal_error' => 'Internal Error',
+        'internal_error_text' => 'Unexpected error',
+        'error_500' => 'Error 500',
+        '500' => '500',
         'general_error' => 'An unknown error has happend',
         'required' => 'This field is required',
         'url' => 'This field must be a valid url'
