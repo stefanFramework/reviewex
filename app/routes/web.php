@@ -51,7 +51,7 @@ Route::prefix('/companies')->group(function () {
     ]);
 });
 
-Route::prefix('/{code}/reviews')->group(function () {
+Route::prefix('/reviews/{code}')->group(function () {
     Route::get('/new', [
         'as' => 'reviews.new',
         'uses' => ReviewRegistrationController::class . '@view'
