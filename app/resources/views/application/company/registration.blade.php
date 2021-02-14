@@ -120,9 +120,6 @@
                                     <button type="submit" class="default-btn register" style="margin-top: 10px;" >
                                         {{ Lang::get('application.general.submit') }}
                                     </button>
-                                    {{--                                <a href="{{ route('home') }}" class="btn btn-secondary" style="margin-top: 10px; margin-left: 10px;">--}}
-                                    {{--                                    {{ Lang::get('application.general.cancel') }}--}}
-                                    {{--                                </a>--}}
                                 </div>
                             </div>
                         </div>

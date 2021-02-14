@@ -92,7 +92,7 @@ class CompanyRegistrationController extends ApplicationController
             throw new Exception('Invalid parameters');
         }
 
-        return View::make('company_registration_success', [
+        return View::make('application.company.success', [
             'companyName' => $companyName,
             'companyCode' => $companyCode
         ]);
