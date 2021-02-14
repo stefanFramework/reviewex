@@ -21,7 +21,44 @@
             </div>
         </div>
     </section>
-    <section class="testimonials-area pt-100 pb-70">
+    <section class="services-area pt-100 pb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-services">
+                        <i class="flaticon-free-delivery"></i>
+                        <h3>FREE SHIPPING</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-services">
+                        <i class="flaticon-cash-back"></i>
+                        <h3>MONEY BACK GUARANTEE</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-services">
+                        <i class="flaticon-secure-payment"></i>
+                        <h3>SAFE PAYMENT</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-services">
+                        <i class="flaticon-satisfaction"></i>
+                        <h3>CUSTOMER SATISFACTION</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="testimonials-area pt-100 pb-70" style="background-image:none;">
         <div class="container">
             <div class="testimonials-slider owl-carousel owl-theme">
                 @foreach($reviews as $review)
