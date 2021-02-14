@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Exception;
 use Throwable;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Redirect;
@@ -12,10 +13,10 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Validation\ValidationException;
 
-use App\Exceptions\ExceptionFormatter;
-use App\Http\Entities\CompanyInformationRecord;
-use App\Utils\ErrorForView;
 use App\Utils\Logger;
+use App\Utils\ErrorForView;
+use App\Http\Records\CompanyRecord;
+use App\Exceptions\ExceptionFormatter;
 
 use App\Domain\Repositories\BusinessSectorRepository;
 use App\Domain\Repositories\CountryRepository;
@@ -58,11 +59,11 @@ class CompanyRegistrationController extends ApplicationController
             $inputData = $request->all();
             $this->validateData($inputData);
 
-            $companyInformation = new CompanyInformationRecord();
+            $companyInformation = new CompanyRecord();
             $companyInformation->name = $inputData['name'];
             $companyInformation->country = $inputData['countries'];
             $companyInformation->state = $inputData['states'];
-            $companyInformation->businessSector = $inputData['business_sector'];
+            $companyInformation->businessSectorId = $inputData['business_sector'];
             $companyInformation->city = $inputData['city'];
             $companyInformation->website = $inputData['website'];
 

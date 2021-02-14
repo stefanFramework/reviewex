@@ -15,6 +15,7 @@ return [
         'follow_social' => 'Follow Us',
         'donate' => 'Donate',
         'companies' => 'Companies',
+        'reviews' => 'Reviews',
     ],
     'errors' => [
         'page_not_found' => 'Page Not Found',

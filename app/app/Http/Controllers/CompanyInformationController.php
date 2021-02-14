@@ -73,6 +73,7 @@ class CompanyInformationController extends ApplicationController
     {
         $companyRecord = new CompanyRecord();
         $companyRecord->name = $company->name;
+        $companyRecord->code = $company->code;
         $companyRecord->website = $company->website_url;
         $companyRecord->businessSector = $company->businessSector->name;
         $companyRecord->state = $company->state->name;

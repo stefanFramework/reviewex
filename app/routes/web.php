@@ -6,11 +6,6 @@ use App\Http\Controllers\CompanyInformationController;
 use App\Http\Controllers\CompanyRegistrationController;
 use App\Http\Controllers\ReviewRegistrationController;
 
-use App\Http\Controllers\Backoffice\HomeController as BackofficeHomeController;
-use App\Http\Controllers\Backoffice\LoginController;
-use App\Http\Controllers\Backoffice\CompanyValidationController;
-use App\Http\Controllers\Backoffice\ReviewValidationController;
-
 use Illuminate\Support\Facades\Route;
 
 
@@ -45,86 +40,22 @@ Route::prefix('/companies')->group(function () {
         'uses' => CompanyRegistrationController::class . '@confirmationView'
     ]);
 
-    Route::get('/{code}', [
-        'as' => 'companies.information',
-        'uses' => CompanyInformationController::class . '@view'
-    ]);
-});
-
-Route::prefix('/reviews/{code}')->group(function () {
-    Route::get('/new', [
-        'as' => 'reviews.new',
-        'uses' => ReviewRegistrationController::class . '@view'
-    ]);
-
-    Route::post('/new', [
-        'as' => 'reviews.new',
-        'uses' => ReviewRegistrationController::class . '@create'
-    ]);
-});
-
-
-Route::prefix('/backoffice')->group(function () {
-        Route::get('/login', [
-            'as' => 'backoffice.login',
-            'uses' => LoginController::class . '@index'
+    Route::prefix('/{code}')->group(function () {
+        Route::get('/', [
+            'as' => 'companies.information',
+            'uses' => CompanyInformationController::class . '@view'
         ]);
 
-        Route::post('/login', [
-            'as' => 'backoffice.login',
-            'uses' => LoginController::class . '@login'
+        Route::get('/create-review', [
+            'as' => 'reviews.new',
+            'uses' => ReviewRegistrationController::class . '@view'
         ]);
 
-        Route::get('/logout', [
-            'as' => 'backoffice.logout',
-            'uses' => LoginController::class . '@logout'
+        Route::post('/create-review', [
+            'as' => 'reviews.new',
+            'uses' => ReviewRegistrationController::class . '@create'
         ]);
-
-        Route::group(['middleware' => 'check.auth'], function () {
-            Route::get('/home', [
-                'as' => 'backoffice.home',
-                'uses' => BackofficeHomeController::class . '@index'
-            ]);
-
-            Route::prefix('/companies')->group(function () {
-                Route::get('/', [
-                    'as' => 'backoffice.companies',
-                    'uses' => CompanyValidationController::class . '@index'
-                ]);
-
-                Route::get('/{id}', [
-                    'as' => 'backoffice.companies.view',
-                    'uses' => CompanyValidationController::class . '@view'
-                ]);
-
-                Route::post('/{id}', [
-                    'as' => 'backoffice.companies.update',
-                    'uses' => CompanyValidationController::class . '@update'
-                ]);
-
-                Route::get('/{id}/dismiss', [
-                    'as' => 'backoffice.companies.dismiss',
-                    'uses' => CompanyValidationController::class . '@dismiss'
-                ]);
-            });
-
-            Route::prefix('/reviews')->group(function () {
-                Route::get('/', [
-                    'as' => 'backoffice.reviews',
-                    'uses' => ReviewValidationController::class . '@index'
-                ]);
-
-                Route::get('/{id}', [
-                    'as' => 'backoffice.reviews.update',
-                    'uses' => ReviewValidationController::class . '@update'
-                ]);
-
-                Route::get('/{id}/dismiss', [
-                    'as' => 'backoffice.reviews.dismiss',
-                    'uses' => ReviewValidationController::class . '@dismiss'
-                ]);
-            });
-
-        });
-
     });
+});
+
+include('backoffice.php');

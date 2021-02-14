@@ -12,6 +12,19 @@
                     {{ Lang::get('application.company.information.reviews_summary_amount', ['number' => count($reviews)]) }}
                 </p>
             @endif
+            <ul style="margin-top: 20px;">
+                <li>
+                    <a href="{{ route('home') }}">
+                        {{ Lang::get('application.general.home') }}
+                    </a>
+                </li>
+                <li>
+                    {{ Lang::get('application.general.companies') }}
+                </li>
+                <li class="active">
+                    {{ $company->name }}
+                </li>
+            </ul>
         </div>
     </div>
 </div>
@@ -26,16 +39,18 @@
                             <i class="bx bx-briefcase"></i>
                             <span>{{ $company->businessSector }}</span>
                         </li>
-                        <li >
+                        <li>
                             <i class="bx bx-location-plus"></i>
                             <span>{{ $company->state }}, {{ $company->city }}</span>
                         </li>
-                        <li >
+                        <li>
                             <i class="bx bx-world"></i>
-                            <span>{{ $company->website }}</span>
+                            <a href="{{ $company->website }}" target="_blank">
+                                {{ $company->website }}
+                            </a>
                         </li>
                     </ul>
-                    <a href="#" class="default-btn" style="margin-top: 20px;">
+                    <a href="{{ route('reviews.new', ['code' => $company->code]) }}" class="default-btn" style="margin-top: 20px;">
                         {{ Lang::get('application.review.create') }}
                     </a>
                 </div>
@@ -120,6 +135,10 @@
         }
 
         .company-list span {
+            margin-left: 5px;
+        }
+
+        .company-list a {
             margin-left: 5px;
         }
     </style>
