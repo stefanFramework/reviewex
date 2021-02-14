@@ -36,7 +36,7 @@ class Company extends Model
         return $this->belongsTo(User::class, 'reviewed_by', 'id');
     }
 
-    public function getSummarizedReviews()
+    public function getSummarizedTags(): Collection
     {
         $result = new Collection();
         $this->reviews->each(function (Review $review) use ($result) {

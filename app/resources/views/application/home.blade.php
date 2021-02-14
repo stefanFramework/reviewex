@@ -10,7 +10,6 @@
                            name="companies"
                            class="form-control"
                            placeholder="{{ Lang::get('application.general.search') }}">
-                    <span id="search-icon" aria-hidden="true" class="input-loading fa "></span>
                     <span style="margin-top: 5px; font-size: 14px;">
                     {!! Lang::get('application.home.search_small_text', ['url' => route('companies.register')]) !!}
                 </span>
@@ -123,7 +122,6 @@
         $(document).ready(function () {
             $("#companies").autocomplete({
                 source: function(request, response) {
-                    $('#search-icon').addClass('fa-spinner fa-spinn');
                     $.ajax({
                         type: "post",
                         url: self.searchUrl,
@@ -133,7 +131,6 @@
                             _token: self.token
                         },
                         success: function(data){
-                            $('#search-icon').removeClass('fa-spinner fa-spinn');
                             $(".ui-helper-hidden-accessible").hide();
                             response(data);
                         }

@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 
 use Throwable;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Database\Eloquent\Collection;
+
 use App\Utils\Logger;
 use App\Http\Records\ReviewRecord;
 use App\Exceptions\ExceptionFormatter;
@@ -13,11 +18,6 @@ use App\Domain\Models\Review;
 use App\Domain\Models\Company;
 use App\Domain\Repositories\CompanyRepository;
 use App\Domain\Repositories\ReviewRepository;
-
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\View;
-use Illuminate\Support\Facades\Response;
-use Illuminate\Database\Eloquent\Collection;
 
 class HomeController extends ApplicationController
 {
@@ -37,7 +37,6 @@ class HomeController extends ApplicationController
     public function index()
     {
         $latestReviews = $this->reviewRepository->getLatest(
-            [],
             'score',
             'desc',
             5

@@ -76,10 +76,10 @@ class ReviewRepository extends BaseRepository
     }
 
     public function getLatest(
-        array $filters = [],
         string $sortBy = 'score',
         string $sortSense = 'DESC',
-        int $limit = 5
+        int $limit = 5,
+        array $filters = []
     ): Collection
     {
         $filters['review_status_id'] = ReviewStatus::published()->getId();

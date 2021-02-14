@@ -26,16 +26,16 @@
                     <ul class="payment">
                         <a href="#" target="_blank">
                             <li>
-                                <img src="assets/images/payment/card-1.jpg" alt="Image">
+                                <img src="{{ asset('assets/images/payment/card-1.jpg') }}" alt="Image">
                             </li>
                             <li>
-                                <img src="assets/images/payment/card-2.jpg" alt="Image">
+                                <img src="{{ asset('assets/images/payment/card-2.jpg') }}" alt="Image">
                             </li>
                             <li>
-                                <img src="assets/images/payment/card-3.jpg" alt="Image">
+                                <img src="{{ asset('assets/images/payment/card-3.jpg') }}" alt="Image">
                             </li>
                             <li>
-                                <img src="assets/images/payment/card-4.jpg" alt="Image">
+                                <img src="{{ asset('assets/images/payment/card-4.jpg') }}" alt="Image">
                             </li>
                         </a>
                     </ul>
