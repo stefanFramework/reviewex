@@ -3,21 +3,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Domain\Models\Feature;
-use App\Domain\Models\Review;
-use App\Domain\Repositories\ReviewRepository;
-use App\Http\Records\ReviewRecord;
 use Exception;
-use Illuminate\Database\Eloquent\Collection;
 use Throwable;
+
 use Illuminate\Support\Facades\View;
+use Illuminate\Database\Eloquent\Collection;
 
 use App\Utils\Logger;
-use App\Exceptions\ExceptionFormatter;
+use App\Http\Records\ReviewRecord;
 use App\Http\Records\CompanyRecord;
+use App\Exceptions\ExceptionFormatter;
 
+use App\Domain\Models\Feature;
+use App\Domain\Models\Review;
 use App\Domain\Models\Company;
 use App\Domain\Models\CompanyStatus;
+use App\Domain\Repositories\ReviewRepository;
 use App\Domain\Repositories\CompanyRepository;
 
 class CompanyInformationController extends ApplicationController

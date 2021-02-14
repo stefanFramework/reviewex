@@ -48,7 +48,7 @@
             <div class="container">
                 <div class="mobile-responsive-menu">
                     <div class="logo">
-                        <a href="index.html">
+                        <a href="{{ route('home') }}">
                             <img src="{{ asset('assets/images/logo.png') }}" alt="logo">
                         </a>
                     </div>
@@ -59,7 +59,7 @@
         <div class="desktop-nav" style="margin-top: 20px;">
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="{{ route('home') }}">
                         <img src="{{ asset('assets/images/logo.png') }}" alt="logo">
                     </a>
 

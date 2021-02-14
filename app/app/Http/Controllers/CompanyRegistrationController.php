@@ -46,7 +46,7 @@ class CompanyRegistrationController extends ApplicationController
         $countries = $this->countryRepository->getAll();
         $businessSectors = $this->businessSectorRepository->getAll();
 
-        return View::make('company_registration', [
+        return View::make('application.company.registration', [
             'countries' => $countries,
             'businessSectors' => $businessSectors
         ]);
