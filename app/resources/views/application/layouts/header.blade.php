@@ -1,5 +1,4 @@
 <header class="header-area">
-    <!-- Start Top Header -->
 {{--    <div class="top-header">--}}
 {{--        <div class="container">--}}
 {{--            <div class="row align-items-center">--}}
@@ -40,9 +39,7 @@
 {{--            </div>--}}
 {{--        </div>--}}
 {{--    </div>--}}
-    <!-- Start Top Header -->
 
-    <!-- Start Navbar Area -->
     <div class="navbar-area">
         <div class="mobile-responsive-nav">
             <div class="container">
@@ -64,14 +61,33 @@
                     </a>
 
                     <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
-                        <ul class="navbar-nav"></ul>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a href="{{ route('home') }}" class="nav-link">
+                                    {{ Lang::get('application.general.home') }}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('about') }}" class="nav-link">
+                                    {{ Lang::get('application.general.about') }}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('terms') }}" class="nav-link">
+                                    {{ Lang::get('application.general.terms_and_conditions') }}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('privacy') }}" class="nav-link">
+                                    {{ Lang::get('application.general.privacy_policy') }}
+                                </a>
+                            </li>
+                        </ul>
                         <div class="others-options">
                         </div>
                     </div>
                 </nav>
             </div>
         </div>
-
     </div>
-    <!-- End Navbar Area -->
 </header>

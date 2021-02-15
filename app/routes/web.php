@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LegalImplicationsController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\CompanyInformationController;
 use App\Http\Controllers\CompanyRegistrationController;
@@ -12,6 +14,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [
     'as' => 'home',
     'uses' => HomeController::class . '@index'
+]);
+
+Route::get('/about', [
+    'as' => 'about',
+    'uses' => AboutController::class . '@index'
+]);
+
+Route::get('/terms-and-conditions', [
+    'as' => 'terms',
+    'uses' => LegalImplicationsController::class . '@termsAndConditions'
+]);
+
+Route::get('/privacy-policy', [
+    'as' => 'privacy',
+    'uses' => LegalImplicationsController::class . '@privacy'
 ]);
 
 Route::post('/search', [
