@@ -4,6 +4,7 @@
 namespace App\Domain\Services;
 
 use App\Http\Entities\CompanyInformationRecord;
+use App\Http\Records\CompanyRecord;
 use App\Utils\ClientIdentifier;
 
 use App\Domain\Models\Company;
@@ -32,18 +33,18 @@ class CompanyRegistrationService
         $this->businessSectorRepository = $businessRepository;
     }
 
-    public function register(CompanyInformationRecord $companyInformation): Company
+    public function register(CompanyRecord $companyRecord): Company
     {
-        $this->assertCompanyIsUnique($companyInformation);
+        $this->assertCompanyIsUnique($companyRecord);
 
-        $businessSector = $this->businessSectorRepository->getById($companyInformation->businessSector);
-        $state = $this->stateRepository->getById($companyInformation->state);
+        $businessSector = $this->businessSectorRepository->getById($companyRecord->businessSectorId);
+        $state = $this->stateRepository->getById($companyRecord->state);
 
         $company = new Company();
-        $company->code = ClientIdentifier::fromName($companyInformation->name);
-        $company->name = $companyInformation->name;
-        $company->city = $companyInformation->city;
-        $company->website_url = $companyInformation->website;
+        $company->code = ClientIdentifier::fromName($companyRecord->name);
+        $company->name = $companyRecord->name;
+        $company->city = $companyRecord->city;
+        $company->website_url = $companyRecord->website;
         $company->company_status_id = CompanyStatus::pending();
 
         $company->state()->associate($state);
@@ -53,9 +54,9 @@ class CompanyRegistrationService
         return $company;
     }
 
-    private function assertCompanyIsUnique(CompanyInformationRecord $companyInformation): void
+    private function assertCompanyIsUnique(CompanyRecord $companyRecord): void
     {
-        $code = ClientIdentifier::fromName($companyInformation->name);
+        $code = ClientIdentifier::fromName($companyRecord->name);
         $company = $this->companyRepository->getByCode($code);
 
         if (!empty($company)) {

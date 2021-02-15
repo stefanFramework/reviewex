@@ -10,7 +10,8 @@ class ErrorForView
 {
     private static array $messages = [
         ErrorCodes::GENERAL_ERROR => 'application.errors.general_error',
-        ErrorCodes::COMPANY_ALREADY_EXISTS => 'application.company.registration.duplicated_company'
+        ErrorCodes::COMPANY_ALREADY_EXISTS => 'application.company.registration.duplicated_company',
+        ErrorCodes::INVALID_COMPANY => 'application.review.invalid_company'
     ];
 
 

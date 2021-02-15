@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Exception;
 use Throwable;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Redirect;
@@ -12,10 +13,10 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Validation\ValidationException;
 
-use App\Exceptions\ExceptionFormatter;
-use App\Http\Entities\CompanyInformationRecord;
-use App\Utils\ErrorForView;
 use App\Utils\Logger;
+use App\Utils\ErrorForView;
+use App\Http\Records\CompanyRecord;
+use App\Exceptions\ExceptionFormatter;
 
 use App\Domain\Repositories\BusinessSectorRepository;
 use App\Domain\Repositories\CountryRepository;
@@ -46,7 +47,7 @@ class CompanyRegistrationController extends ApplicationController
         $countries = $this->countryRepository->getAll();
         $businessSectors = $this->businessSectorRepository->getAll();
 
-        return View::make('company_registration', [
+        return View::make('application.company.registration', [
             'countries' => $countries,
             'businessSectors' => $businessSectors
         ]);
@@ -58,15 +59,15 @@ class CompanyRegistrationController extends ApplicationController
             $inputData = $request->all();
             $this->validateData($inputData);
 
-            $companyInformation = new CompanyInformationRecord();
-            $companyInformation->name = $inputData['name'];
-            $companyInformation->country = $inputData['countries'];
-            $companyInformation->state = $inputData['states'];
-            $companyInformation->businessSector = $inputData['business_sector'];
-            $companyInformation->city = $inputData['city'];
-            $companyInformation->website = $inputData['website'];
+            $companyRecord = new CompanyRecord();
+            $companyRecord->name = $inputData['name'];
+            $companyRecord->country = $inputData['countries'];
+            $companyRecord->state = $inputData['states'];
+            $companyRecord->businessSectorId = $inputData['business_sector'];
+            $companyRecord->city = $inputData['city'];
+            $companyRecord->website = $inputData['website'];
 
-            $company = $this->registrationService->register($companyInformation);
+            $company = $this->registrationService->register($companyRecord);
 
             return Redirect::route('companies.success', ['name' => $company->name, 'code' => $company->code]);
         } catch (ValidationException $vex) {
@@ -74,7 +75,7 @@ class CompanyRegistrationController extends ApplicationController
                 ->withInput()
                 ->withErrors($vex->errors());
         } catch (Throwable $ex) {
-            Logger::error('login_error', ['error' => ExceptionFormatter::format($ex)]);
+            Logger::error('company_registration_error', ['error' => ExceptionFormatter::format($ex)]);
             return Redirect::back()
                 ->withInput()
                 ->withErrors([
@@ -92,7 +93,7 @@ class CompanyRegistrationController extends ApplicationController
             throw new Exception('Invalid parameters');
         }
 
-        return View::make('company_registration_success', [
+        return View::make('application.company.success', [
             'companyName' => $companyName,
             'companyCode' => $companyCode
         ]);
