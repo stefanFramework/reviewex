@@ -4,23 +4,26 @@
 namespace App\Http\Controllers;
 
 
+use Exception;
+use Throwable;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
+
+use App\Utils\Logger;
+use App\Utils\ErrorForView;
+use App\Http\Records\ReviewRecord;
+use App\Http\Records\Factories\CompanyRecordFactory;
+use App\Exceptions\ExceptionFormatter;
+
 use App\Domain\Models\Company;
 use App\Domain\Repositories\CompanyRepository;
 use App\Domain\Repositories\FeatureRepository;
 use App\Domain\Services\ReviewRegistrationService;
-use App\Exceptions\ExceptionFormatter;
-use App\Http\Records\Factories\CompanyRecordFactory;
-use App\Http\Records\ReviewRecord;
-use App\Utils\ErrorForView;
-use App\Utils\Logger;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Lang;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\View;
-use Illuminate\Validation\ValidationException;
-use Mockery\Exception;
-use Throwable;
 
 class ReviewRegistrationController extends ApplicationController
 {
@@ -44,7 +47,7 @@ class ReviewRegistrationController extends ApplicationController
     public function view(string $companyCode)
     {
         /** @var Company $company */
-        $company = $this->companyRepository->getByCode($companyCode);
+        $company = $this->companyRepository->getPublishedByCode($companyCode);
 
         if (empty($company)) {
             $ex = new Exception('Invalid Company: ' . $companyCode);
@@ -97,7 +100,7 @@ class ReviewRegistrationController extends ApplicationController
 
     public function confirmationView(string $companyCode)
     {
-        $company = $this->companyRepository->getByCode($companyCode);
+        $company = $this->companyRepository->getPublishedByCode($companyCode);
 
         if (empty($company)) {
             throw new Exception('Invalid parameters');

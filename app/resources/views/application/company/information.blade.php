@@ -33,7 +33,7 @@
         <div class="row align-items-center">
 
             <div class="col-lg-6 col-md-6 col-sm-12">
-                <div class="shop-details-desc">
+                <div class="shop-details-desc" style="margin-bottom: 10px;">
                     <ul class="company-list">
                         <li>
                             <i class="bx bx-briefcase"></i>

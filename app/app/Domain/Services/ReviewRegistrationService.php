@@ -3,7 +3,9 @@
 namespace App\Domain\Services;
 
 use App\Http\Records\ReviewRecord;
+
 use App\Domain\Models\Review;
+use App\Domain\Models\Company;
 use App\Domain\Models\ReviewStatus;
 use App\Domain\Repositories\CompanyRepository;
 use App\Domain\Exceptions\InvalidCompanyException;
@@ -21,7 +23,8 @@ class ReviewRegistrationService
     {
         $this->assertCompanyExists($reviewRecord);
 
-        $company = $this->companyRepository->getByCode($reviewRecord->companyCode);
+        /** @var Company $company */
+        $company = $this->companyRepository->getPublishedByCode($reviewRecord->companyCode);
 
         $review = new Review();
         $review->title = $reviewRecord->title;
@@ -36,12 +39,14 @@ class ReviewRegistrationService
             $review->save();
         }
 
+        $company->updateScoring();
+
         return $review;
     }
 
     private function assertCompanyExists(ReviewRecord $reviewRecord)
     {
-        $company = $this->companyRepository->getByCode($reviewRecord->companyCode);
+        $company = $this->companyRepository->getPublishedByCode($reviewRecord->companyCode);
 
         if (empty($company)) {
             throw new InvalidCompanyException('Code: ' . $reviewRecord->companyCode);

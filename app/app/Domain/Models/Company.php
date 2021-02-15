@@ -50,6 +50,12 @@ class Company extends Model
         return $result;
     }
 
+    public function updateScoring(): void {
+        $updatedScore = ceil($this->reviews->avg('score'));
+        $this->score = $updatedScore;
+        $this->save();
+    }
+
     public function getCompanyStatusIdAttribute(): CompanyStatus
     {
         $statusId = $this->company_status_id;

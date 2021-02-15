@@ -57,6 +57,23 @@ class CompanyRepository extends BaseRepository
         );
     }
 
+    public function getPublishedByCode(
+        string $code,
+        array $filters = [],
+        array $fields = [],
+        array $with = []
+    ): ?Model
+    {
+        $filters['code'] = $code;
+        $filters['company_status_id'] = CompanyStatus::published()->getId();
+
+        return $this->getFirst(
+            $fields,
+            $with,
+            $filters
+        );
+    }
+
     public function getByTextName(
         string $textName,
         array $fields = [],
