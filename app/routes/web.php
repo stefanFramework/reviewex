@@ -55,6 +55,11 @@ Route::prefix('/companies')->group(function () {
             'as' => 'reviews.new',
             'uses' => ReviewRegistrationController::class . '@create'
         ]);
+
+        Route::get('/create-review/success', [
+            'as' => 'reviews.success',
+            'uses' => ReviewRegistrationController::class . '@confirmationView'
+        ]);
     });
 });
 

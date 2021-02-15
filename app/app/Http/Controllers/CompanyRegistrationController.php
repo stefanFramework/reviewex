@@ -59,15 +59,15 @@ class CompanyRegistrationController extends ApplicationController
             $inputData = $request->all();
             $this->validateData($inputData);
 
-            $companyInformation = new CompanyRecord();
-            $companyInformation->name = $inputData['name'];
-            $companyInformation->country = $inputData['countries'];
-            $companyInformation->state = $inputData['states'];
-            $companyInformation->businessSectorId = $inputData['business_sector'];
-            $companyInformation->city = $inputData['city'];
-            $companyInformation->website = $inputData['website'];
+            $companyRecord = new CompanyRecord();
+            $companyRecord->name = $inputData['name'];
+            $companyRecord->country = $inputData['countries'];
+            $companyRecord->state = $inputData['states'];
+            $companyRecord->businessSectorId = $inputData['business_sector'];
+            $companyRecord->city = $inputData['city'];
+            $companyRecord->website = $inputData['website'];
 
-            $company = $this->registrationService->register($companyInformation);
+            $company = $this->registrationService->register($companyRecord);
 
             return Redirect::route('companies.success', ['name' => $company->name, 'code' => $company->code]);
         } catch (ValidationException $vex) {
@@ -75,7 +75,7 @@ class CompanyRegistrationController extends ApplicationController
                 ->withInput()
                 ->withErrors($vex->errors());
         } catch (Throwable $ex) {
-            Logger::error('login_error', ['error' => ExceptionFormatter::format($ex)]);
+            Logger::error('company_registration_error', ['error' => ExceptionFormatter::format($ex)]);
             return Redirect::back()
                 ->withInput()
                 ->withErrors([

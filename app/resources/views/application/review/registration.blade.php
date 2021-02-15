@@ -13,7 +13,9 @@
                         </a>
                     </li>
                     <li>
-                        {{ Lang::get('application.general.reviews') }}
+                        <a href="{{ route('companies.information', ['code' => $company->code]) }}">
+                            {{ $company->name }}
+                        </a>
                     </li>
                     <li class="active">
                         {{ Lang::get('application.review.create') }}
@@ -26,93 +28,115 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-8 col-sm-12">
-                    <form class="user-form" method="post" action="{{ route('companies.register') }}">
+                    <form class="user-form" method="post" action="{{ route('reviews.new', ['code' => $company->code]) }}">
                         <div class="billing-details">
                             <span>
-                                {{ Lang::get('application.company.registration.subtitle') }}
+                                {{ Lang::get('application.review.subtitle') }}
                             </span>
-                            @if($errors && $errors->has('registration_error'))
-                                <p class="form-error">{{ $errors->first('registration_error') }}</p>
+                            @if($errors && $errors->has('review_registration_error'))
+                                <p class="form-error">{{ $errors->first('review_registration_error') }}</p>
                             @endif
                             <div class="row" style="margin-top: 20px;">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label for="name" class="form-label">{{ Lang::get('application.company.registration.name') }}</label>
-                                        <input type="text" id="name" name="name" class="form-control" value="{{ old('name') }}">
-                                        @if ($errors && $errors->has('name'))
-                                            <label for="name" class="form-error">{{ $errors->first('name') }}</label>
+                                        <label for="title" class="form-label">Title</label>
+                                        <input type="text" id="title" name="title" class="form-control" value="{{ old('title') }}">
+                                        @if ($errors && $errors->has('title'))
+                                            <label for="title" class="form-error">{{ $errors->first('title') }}</label>
                                         @endif
                                     </div>
                                 </div>
 
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label for="business_sector" class="form-label">{{ Lang::get('application.company.registration.business_sector') }}</label>
-                                        <select id="business_sector" name="business_sector" class="form-control">
-                                            <option value="">{{ Lang::get('application.company.registration.default_selection') }}</option>
-{{--                                            @foreach($businessSectors as $businessSector)--}}
-{{--                                                @if(old('business_sector') == $businessSector->id)--}}
-{{--                                                    <option value="{{ $businessSector->id }}" selected>{{ $businessSector->name }}</option>--}}
-{{--                                                @else--}}
-{{--                                                    <option value="{{ $businessSector->id }}">{{ $businessSector->name }}</option>--}}
-{{--                                                @endif--}}
-{{--                                            @endforeach--}}
-                                        </select>
-                                        @if ($errors && $errors->has('business_sector'))
-                                            <label for="business_sector" class="form-error">{{ $errors->first('business_sector') }}</label>
+                                        <label for="text" class="form-label">Text</label>
+                                        <textarea id="text" name="text" class="form-control" rows="5" style="resize: none;">{{ old('text') }}</textarea>
+                                        @if ($errors && $errors->has('text'))
+                                            <label for="text" class="form-error">{{ $errors->first('text') }}</label>
                                         @endif
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="text" class="form-label">Score</label>
+                                        <div id="score-slider" class="price-range-bar"></div>
+                                        <div class="price-range-filter">
+                                            <div class="price-range-filter-item">
+                                                <input type="hidden" id="score" name="score" value="1" readonly>
+                                                <div id="score-stars">
+                                                    <i class='bx bxs-star fs-3'></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <div class="form-group">
+                                        <div id="1-star">
+                                            <i class='bx bxs-star'></i>
+                                            <i class='bx bxs-star empty-star'></i>
+                                            <i class='bx bxs-star empty-star'></i>
+                                            <i class='bx bxs-star empty-star'></i>
+                                            <i class='bx bxs-star empty-star'></i>
+                                            <p class="star-description">
+                                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean m
+                                            </p>
+                                        </div>
+                                        <div id="2-star" style="display: none;">
+                                            <i class='bx bxs-star'></i>
+                                            <i class='bx bxs-star'></i>
+                                            <i class='bx bxs-star empty-star'></i>
+                                            <i class='bx bxs-star empty-star'></i>
+                                            <i class='bx bxs-star empty-star'></i>
+                                            <p class="star-description">
+                                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, to
+                                            </p>
+                                        </div>
+                                        <div id="3-star" style="display: none;">
+                                            <i class='bx bxs-star'></i>
+                                            <i class='bx bxs-star'></i>
+                                            <i class='bx bxs-star'></i>
+                                            <i class='bx bxs-star empty-star'></i>
+                                            <i class='bx bxs-star empty-star'></i>
+                                            <p class="star-description">
+                                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean m
+                                            </p>
+                                        </div>
+                                        <div id="4-star" style="display: none;">
+                                            <i class='bx bxs-star'></i>
+                                            <i class='bx bxs-star'></i>
+                                            <i class='bx bxs-star'></i>
+                                            <i class='bx bxs-star'></i>
+                                            <i class='bx bxs-star empty-star'></i>
+                                            <p class="star-description">
+                                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean m
+                                            </p>
+                                        </div>
+                                        <div id="5-star" style="display: none;">
+                                            <i class='bx bxs-star'></i>
+                                            <i class='bx bxs-star'></i>
+                                            <i class='bx bxs-star'></i>
+                                            <i class='bx bxs-star'></i>
+                                            <i class='bx bxs-star'></i>
+                                            <p class="star-description">
+                                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, to
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
 
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label for="countries" class="form-label">{{ Lang::get('application.company.registration.country') }}</label>
-                                        <select id="countries" name="countries" class="form-control">
-                                            <option value="">{{ Lang::get('application.company.registration.default_selection') }}</option>
-{{--                                            @foreach($countries as $country)--}}
-{{--                                                @if(old('countries') == $country->id)--}}
-{{--                                                    <option value="{{ $country->id }}" selected>{{ $country->name }}</option>--}}
-{{--                                                @else--}}
-{{--                                                    <option value="{{ $country->id }}">{{ $country->name }}</option>--}}
-{{--                                                @endif--}}
-{{--                                            @endforeach--}}
-                                        </select>
-                                        @if ($errors && $errors->has('countries'))
-                                            <label for="countries" class="form-error">{{ $errors->first('countries') }}</label>
-                                        @endif
-                                    </div>
-                                </div>
-
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <label for="states" class="form-label">{{ Lang::get('application.company.registration.state') }}</label>
-                                        <select id="states" name="states" class="form-control">
-                                            <option value="">{{ Lang::get('application.company.registration.default_selection') }}</option>
-                                        </select>
-                                        @if ($errors && $errors->has('states'))
-                                            <label for="states" class="form-error">{{ $errors->first('states') }}</label>
-                                        @endif
-                                    </div>
-                                </div>
-
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <label for="city" class="form-label">{{ Lang::get('application.company.registration.city') }}</label>
-                                        <input type="text" id="city" name="city" class="form-control" value="{{ old('city') }}" />
-                                        @if ($errors && $errors->has('city'))
-                                            <label for="city" class="form-error">{{ $errors->first('city') }}</label>
-                                        @endif
-                                    </div>
-                                </div>
-
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <label for="website" class="form-label">{{ Lang::get('application.company.registration.website') }}</label>
-                                        <input type="text" id="website" name="website" class="form-control" value="{{ old('website') }}" >
-                                        @if ($errors && $errors->has('website'))
-                                            <label for="website" class="form-error">{{ $errors->first('website') }}</label>
-                                        @endif
+                                        <label for="text" class="form-label">Chose your tags</label>
+                                        <ul class="tag-list">
+                                            @foreach($tags as $tag)
+                                                <li>
+                                                    <input type="checkbox" value="{{ $tag->id }}" name="tags[]" style="margin-right: 5px;" /> {{ $tag->name  }}
+                                                </li>
+                                            @endforeach
+                                        </ul>
                                     </div>
                                 </div>
 
@@ -129,26 +153,26 @@
                     <div class="widget-sidebar">
                         <div class="sidebar-widget recent-post">
                             <h3 class="widget-title">
-                                {{ Lang::get('application.company.registration.sidebar_title') }}
+                                {{ Lang::get('application.review.sidebar_title') }}
                             </h3>
-                            <ul class="company-registration-instructions">
+                            <ul class="registration-instructions">
                                 <li>
                                 <span>
                                     <i class="bx bx-edit"></i>
-                                    {!! Lang::get('application.company.registration.sidebar_step_1') !!}
+                                    {!! Lang::get('application.review.sidebar_step_1') !!}
                                 </span>
                                 </li>
                                 <li>
 
                                 <span>
                                     <i class="bx bx-user-check"></i>
-                                    {!! Lang::get('application.company.registration.sidebar_step_2') !!}
+                                    {!! Lang::get('application.review.sidebar_step_2') !!}
                                 </span>
                                 </li>
                                 <li>
                                 <span>
                                     <i class="bx bx-check-circle"></i>
-                                    {!! Lang::get('application.company.registration.sidebar_step_3') !!}
+                                    {!! Lang::get('application.review.sidebar_step_3') !!}
                                 </span>
                                 </li>
                             </ul>
@@ -167,19 +191,36 @@
             color: #b21f2d !important;
         }
 
-        .company-registration-instructions {
+        .registration-instructions {
 
         }
 
-        .company-registration-instructions li {
+        .registration-instructions li {
             padding-left: 10px !important;
 
         }
 
-        .company-registration-instructions i {
+        .registration-instructions i {
             font-size: 30px !important;
             margin-right: 10px;
 
+        }
+
+        .empty-star {
+            color: #ccced2 !important;
+        }
+
+        .star-description {
+            margin-top: 10px;
+        }
+
+        .tag-list {
+            list-style-type: none;
+            margin-left: -25px;
+        }
+
+        .tag-list li {
+            margin-bottom: 5px;
         }
     </style>
 @endsection
@@ -187,27 +228,30 @@
 @section('javascript')
     <script type="text/javascript">
         $(document).ready(function () {
-            var self = this;
-            var locationUrl = "{{ route('location.states', ['countryId' => 'COUNTRY_ID']) }}";
-            $('#countries').change(function () {
-                var val = $(this).val();
-                if (val === '') {
-                    return;
-                }
+            $( "#score-slider").slider({
+                range: false,
+                min: 1,
+                max: 5,
+                values: [1],
+                slide: function( event, ui ) {
+                    let score = ui.values[0];
 
-                $.ajax({
-                    type: "get",
-                    url: locationUrl.replace('COUNTRY_ID', val),
-                    dataType: "json",
-                    data: {},
-                    success: function(data){
-                        $('#states').empty();
-                        $.each(data, function(index, element){
-                            $('#states').append(new Option(element.name, element.id));
-                        });
+                    $( "#score" ).val(score);
+
+                    $("#score-stars").html('');
+
+                    for(i = 0; i < score; i++) {
+                        $("#score-stars").append("<i class='bx bxs-star fs-3'></i>");
                     }
-                });
-            });
+
+                    $("#1-star").hide();
+                    $("#2-star").hide();
+                    $("#3-star").hide();
+                    $("#4-star").hide();
+                    $("#5-star").hide();
+                    $("#" + score + "-star").show();
+                }
+            })
         });
     </script>
 @endsection

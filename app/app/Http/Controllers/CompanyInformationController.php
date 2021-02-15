@@ -3,6 +3,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Records\Factories\CompanyRecordFactory;
 use Exception;
 use Throwable;
 
@@ -71,18 +72,7 @@ class CompanyInformationController extends ApplicationController
 
     private function getCompanyRecord(Company $company): CompanyRecord
     {
-        $companyRecord = new CompanyRecord();
-        $companyRecord->name = $company->name;
-        $companyRecord->code = $company->code;
-        $companyRecord->website = $company->website_url;
-        $companyRecord->businessSector = $company->businessSector->name;
-        $companyRecord->state = $company->state->name;
-        $companyRecord->city = $company->city;
-        $companyRecord->score = $company->score;
-        $companyRecord->tags = $this->getTags($company);
-
-        return $companyRecord;
-
+        return CompanyRecordFactory::fromModel($company, $this->getTags($company));
     }
 
     private function getTags(Company $company): array

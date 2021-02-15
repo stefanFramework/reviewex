@@ -77,6 +77,22 @@ return [
         ]
     ],
     'review' => [
-        'create' => 'Create review'
+        'create' => 'Create review',
+        'subtitle' => 'All fields marked with * are required',
+        'sidebar_title' => 'How does this work?',
+        'sidebar_step_1' => 'Complete the form with the required information. </br> Once you are all done, submit the form for review',
+        'sidebar_step_2' => 'Our team will review the information ',
+        'sidebar_step_3' => 'The company will be available in the system for everybody',
+        'error' => 'Oh! Looks like something went wrong and we couldn\'t register your review :(',
+        'invalid_company' => 'Invalid company',
+        'success' => [
+            'title' => 'Thank you for your contribution!',
+            'body' => 'Your review for <strong>:company</strong> was successfully registrated in our system.
+                Now, our team is going to review the information you register, and make it public on the site for enyone to use.
+                We thank you again for participate in this project, and hope to see you soon in our site.
+                Have a nice day!',
+            'after_message' => '',
+            'continue' => 'I wanna continue looking'
+        ]
     ]
 ];
