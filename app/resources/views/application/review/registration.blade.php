@@ -40,7 +40,9 @@
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label for="title" class="form-label">Title</label>
+                                        <label for="title" class="form-label">
+                                            {{ Lang::get('application.review.title_label') }}
+                                        </label>
                                         <input type="text" id="title" name="title" class="form-control" value="{{ old('title') }}">
                                         @if ($errors && $errors->has('title'))
                                             <label for="title" class="form-error">{{ $errors->first('title') }}</label>
@@ -50,7 +52,9 @@
 
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label for="text" class="form-label">Text</label>
+                                        <label for="text" class="form-label">
+                                            {{ Lang::get('application.review.text_label') }}
+                                        </label>
                                         <textarea id="text" name="text" class="form-control" rows="5" style="resize: none;">{{ old('text') }}</textarea>
                                         @if ($errors && $errors->has('text'))
                                             <label for="text" class="form-error">{{ $errors->first('text') }}</label>
@@ -60,7 +64,9 @@
 
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label for="text" class="form-label">Score</label>
+                                        <label for="text" class="form-label">
+                                            {{ Lang::get('application.review.score_label') }}
+                                        </label>
                                         <div id="score-slider" class="price-range-bar"></div>
                                         <div class="price-range-filter">
                                             <div class="price-range-filter-item">
@@ -81,7 +87,7 @@
                                             <i class='bx bxs-star empty-star'></i>
                                             <i class='bx bxs-star empty-star'></i>
                                             <p class="star-description">
-                                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean m
+                                                {{ Lang::get('application.review.1_star_description') }}
                                             </p>
                                         </div>
                                         <div id="2-star" style="display: none;">
@@ -91,7 +97,7 @@
                                             <i class='bx bxs-star empty-star'></i>
                                             <i class='bx bxs-star empty-star'></i>
                                             <p class="star-description">
-                                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, to
+                                                {{ Lang::get('application.review.2_star_description') }}
                                             </p>
                                         </div>
                                         <div id="3-star" style="display: none;">
@@ -101,7 +107,7 @@
                                             <i class='bx bxs-star empty-star'></i>
                                             <i class='bx bxs-star empty-star'></i>
                                             <p class="star-description">
-                                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean m
+                                                {{ Lang::get('application.review.3_star_description') }}
                                             </p>
                                         </div>
                                         <div id="4-star" style="display: none;">
@@ -111,7 +117,7 @@
                                             <i class='bx bxs-star'></i>
                                             <i class='bx bxs-star empty-star'></i>
                                             <p class="star-description">
-                                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean m
+                                                {{ Lang::get('application.review.4_star_description') }}
                                             </p>
                                         </div>
                                         <div id="5-star" style="display: none;">
@@ -121,7 +127,7 @@
                                             <i class='bx bxs-star'></i>
                                             <i class='bx bxs-star'></i>
                                             <p class="star-description">
-                                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, to
+                                                {{ Lang::get('application.review.5_star_description') }}
                                             </p>
                                         </div>
                                     </div>
@@ -129,7 +135,9 @@
 
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label for="text" class="form-label">Chose your tags</label>
+                                        <label for="text" class="form-label">
+                                            {{ Lang::get('application.review.tags_label') }}
+                                        </label>
                                         <ul class="tag-list">
                                             @foreach($tags as $tag)
                                                 <li>

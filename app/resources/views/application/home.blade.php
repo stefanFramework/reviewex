@@ -11,8 +11,8 @@
                            class="form-control"
                            placeholder="{{ Lang::get('application.general.search') }}">
                     <span style="margin-top: 5px; font-size: 14px;">
-                    {!! Lang::get('application.home.search_small_text', ['url' => route('companies.register')]) !!}
-                </span>
+                        {!! Lang::get('application.home.search_small_text', ['url' => route('companies.register')]) !!}
+                    </span>
                     <p style="margin-top: 50px; margin-bottom: 50px;">
                         {{ Lang::get('application.home.main_content') }}
                     </p>
@@ -24,35 +24,27 @@
     <section class="services-area pt-100 pb-70">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-sm-6">
+                <div class="col-lg-4 col-sm-12">
                     <div class="single-services">
-                        <i class="flaticon-free-delivery"></i>
-                        <h3>FREE SHIPPING</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
+                        <i class="{{ Lang::get('application.home.services_1.icon') }}"></i>
+                        <h3>{{ Lang::get('application.home.services_1.title') }}</h3>
+                        <p>{{ Lang::get('application.home.services_1.description') }}</p>
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-sm-6">
+                <div class="col-lg-4 col-sm-12">
                     <div class="single-services">
-                        <i class="flaticon-cash-back"></i>
-                        <h3>MONEY BACK GUARANTEE</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
+                        <i class="{{ Lang::get('application.home.services_2.icon') }}"></i>
+                        <h3>{{ Lang::get('application.home.services_2.title') }}</h3>
+                        <p>{{ Lang::get('application.home.services_2.description') }}</p>
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-sm-6">
+                <div class="col-lg-4 col-sm-12">
                     <div class="single-services">
-                        <i class="flaticon-secure-payment"></i>
-                        <h3>SAFE PAYMENT</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-services">
-                        <i class="flaticon-satisfaction"></i>
-                        <h3>CUSTOMER SATISFACTION</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
+                        <i class="{{ Lang::get('application.home.services_3.icon') }}"></i>
+                        <h3>{{ Lang::get('application.home.services_3.title') }}</h3>
+                        <p>{{ Lang::get('application.home.services_3.description') }}</p>
                     </div>
                 </div>
             </div>

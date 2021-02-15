@@ -40,7 +40,22 @@ return [
     'home' => [
         'register_new_company' => 'Register new company',
         'search_small_text' => 'Couldn\'t find the company you were looking for? <a href=":url">Register new company</a>',
-        'main_content' => 'Lorem Ipsum'
+        'main_content' => 'But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the gre',
+        'services_1' => [
+            'icon' => 'flaticon-loupe',
+            'title' => 'Find the Company you want to check out',
+            'description' => 'But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was bo'
+        ] ,
+        'services_2' => [
+            'icon' => 'flaticon-laptop',
+            'title' => 'Take a look at what people are saying',
+            'description' => 'But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was bo'
+        ],
+        'services_3' => [
+            'icon' => 'flaticon-done',
+            'title' => 'Add your own opinion',
+            'description' => 'But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was bo'
+        ],
     ],
     'company' => [
         'information' => [
@@ -79,7 +94,16 @@ return [
     'review' => [
         'create' => 'Create review',
         'subtitle' => 'All fields marked with * are required',
+        'title_label' => 'Title',
+        'text_label' => 'Text',
+        'score_label' => 'Score',
+        'tags_label' => 'Chose your tags',
         'sidebar_title' => 'How does this work?',
+        '1_star_description' => 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean m',
+        '2_star_description' => 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, to',
+        '3_star_description' => 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean m',
+        '4_star_description' => 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, to',
+        '5_star_description' => 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean m',
         'sidebar_step_1' => 'Complete the form with the required information. </br> Once you are all done, submit the form for review',
         'sidebar_step_2' => 'Our team will review the information ',
         'sidebar_step_3' => 'The company will be available in the system for everybody',
