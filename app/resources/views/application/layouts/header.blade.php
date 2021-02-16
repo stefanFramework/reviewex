@@ -32,12 +32,12 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('terms') }}" class="nav-link">
+                                <a href="{{ route('terms') }}" class="nav-link" target="_blank">
                                     {{ Lang::get('application.general.terms_and_conditions') }}
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('privacy') }}" class="nav-link">
+                                <a href="{{ route('privacy') }}" class="nav-link" target="_blank">
                                     {{ Lang::get('application.general.privacy_policy') }}
                                 </a>
                             </li>
@@ -79,9 +79,9 @@
                             id="companies"
                             name="companies"
                             placeholder="{{ Lang::get('application.general.search') }}" >
-                        <button class="search-button" type="submit">
-                            <i class="bx bx-search"></i>
-                        </button>
+                        <span style="margin-top: 5px; font-size: 14px;">
+                            {!! Lang::get('application.home.search_small_text', ['url' => route('companies.register')]) !!}
+                        </span>
                     </form>
                 </div>
             </div>

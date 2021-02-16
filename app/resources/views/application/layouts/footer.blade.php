@@ -56,12 +56,12 @@
             <div class="col-lg-6">
                 <ul class="terms-condition">
                     <li>
-                        <a href="{{ route('terms') }}">
+                        <a href="{{ route('terms') }}" target="_blank">
                             {{ Lang::get('application.general.terms_and_conditions') }}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('privacy') }}">
+                        <a href="{{ route('privacy') }}" target="_blank">
                             {{ Lang::get('application.general.privacy_policy') }}
                         </a>
                     </li>
