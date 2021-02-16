@@ -31,7 +31,8 @@ return [
         '500' => '500',
         'general_error' => 'An unknown error has happend',
         'required' => 'This field is required',
-        'url' => 'This field must be a valid url'
+        'url' => 'This field must be a valid url',
+        'recaptcha' => 'Invalid Captcha'
     ],
     'metadata' => [
         'title' => 'Reviewex',

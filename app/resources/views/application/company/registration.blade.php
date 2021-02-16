@@ -117,6 +117,15 @@
                                 </div>
 
                                 <div class="col-12">
+                                    <div class="form-group">
+                                        {!! htmlFormSnippet() !!}
+                                        @if ($errors && $errors->has('g-recaptcha-response'))
+                                            <label for="website" class="form-error">{{ $errors->first('g-recaptcha-response') }}</label>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
                                     <button type="submit" class="default-btn register" style="margin-top: 10px;" >
                                         {{ Lang::get('application.general.submit') }}
                                     </button>

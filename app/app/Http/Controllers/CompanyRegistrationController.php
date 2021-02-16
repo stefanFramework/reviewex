@@ -108,6 +108,7 @@ class CompanyRegistrationController extends ApplicationController
             'states' => 'required',
             'city' => 'required',
             'website' => 'required|url',
+            'g-recaptcha-response' => 'recaptcha',
         ];
 
         $messages = [
@@ -118,6 +119,7 @@ class CompanyRegistrationController extends ApplicationController
             'city.required' => Lang::get('application.errors.required'),
             'website.required' => Lang::get('application.errors.required'),
             'website.url' => Lang::get('application.errors.url'),
+            'g-recaptcha-response.recaptcha' => Lang::get('application.errors.recaptcha'),
         ];
 
         $validator = Validator::make($data, $rules, $messages);

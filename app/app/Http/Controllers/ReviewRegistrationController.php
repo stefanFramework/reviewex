@@ -117,11 +117,13 @@ class ReviewRegistrationController extends ApplicationController
         $rules = [
             'title' => 'required',
             'text' => 'required',
+            'g-recaptcha-response' => 'recaptcha',
         ];
 
         $messages = [
             'title.required' => Lang::get('application.errors.required'),
             'text.required' => Lang::get('application.errors.required'),
+            'g-recaptcha-response.recaptcha' => Lang::get('application.errors.recaptcha'),
         ];
 
         $validator = Validator::make($data, $rules, $messages);
