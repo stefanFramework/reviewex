@@ -84,6 +84,7 @@
         }
     </style>
     @yield('style')
+    {!! htmlScriptTagJsApi(['lang' => 'en']) !!}
 </head>
 
 <body>

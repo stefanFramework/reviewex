@@ -32,14 +32,7 @@
                         {!! Lang::get('application.company.success.body', ['company' => $companyName]) !!}
                     </p>
                 </div>
-                <div class="terms-content">
-                    <p>
-                        {!! Lang::get('application.company.success.after_message') !!}
-                    </p>
-                </div>
-                <a href="{{ route('reviews.new', ['code' => $companyCode]) }}" class="default-btn register">
-                    {{ Lang::get('application.review.create') }}
-                </a>
+                <div class="terms-content"></div>
             </div>
         </div>
     </section>
