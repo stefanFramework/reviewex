@@ -5,6 +5,7 @@ return [
         'slogan' => 'Speak your mind',
         'back_to_top' => 'TOP',
         'search' => 'Search your company ...',
+        'no_results_search' => 'No suggestions',
         'copyright' => '&copy;Copyright 2021 <a href="#">Reviewex</a> All Rights Reserved',
         'all_right_reserved' => 'All Rights Reserved',
         'submit' => 'Submit',

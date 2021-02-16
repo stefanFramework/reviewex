@@ -19,6 +19,70 @@
     <link rel="stylesheet" href="{{ asset('assets/css/animate.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
+    <style>
+        .ui-corner-all
+        {
+            -moz-border-radius: 4px 4px 4px 4px;
+        }
+        .ui-widget-content
+        {
+            border: 1px solid #c4ab90;
+            color: #222222;
+            background-color: #ffffff;
+        }
+        .ui-widget
+        {
+            font-family: Verdana,Arial,sans-serif;
+            font-size: 15px;
+        }
+        .ui-menu
+        {
+            display: block;
+            float: left;
+            list-style: none outside none;
+            margin: 0;
+            padding: 2px;
+        }
+        .ui-autocomplete
+        {
+            cursor: default;
+            position: absolute;
+        }
+        .ui-menu .ui-menu-item
+        {
+            clear: left;
+            float: left;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+        .ui-menu .ui-menu-item a
+        {
+            display: block;
+            padding: 3px 3px 3px 3px;
+            text-decoration: none;
+            cursor: pointer;
+            background-color: Green;
+        }
+        .ui-menu .ui-menu-item a:hover
+        {
+            display: block;
+            padding: 3px 3px 3px 3px;
+            text-decoration: none;
+            color: White;
+            cursor: pointer;
+            background-color: ButtonText;
+        }
+        .ui-widget-content a
+        {
+            color: #222222;
+        }
+
+        .ui-autocomplete-term {
+            font-weight: bold;
+            color: #000000;
+        }
+    </style>
     @yield('style')
 </head>
 
@@ -40,6 +104,19 @@
 <script src="{{ asset('assets/js/ajaxchimp.min.js') }}"></script>
 <script src="{{ asset('assets/js/range-slider.min.js') }}"></script>
 <script src="{{ asset('assets/js/custom.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/application/company_finder.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var self = this;
+        var searchUrl = "{{ route('home.search') }}";
+        var redirectUrl = "{{ route('companies.information', ['code' => 'CODE']) }}";
+        var token = "{{ csrf_token() }}";
+
+        var companyFinder = new  window.reviewex.company.CompanyFinder(searchUrl, redirectUrl, token);
+        companyFinder.noResultsMessage = "{{ Lang::get('application.general.no_results_search') }}"
+        companyFinder.init();
+    });
+</script>
 @yield('javascript')
 </body>
 </html>

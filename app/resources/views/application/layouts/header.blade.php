@@ -1,45 +1,4 @@
 <header class="header-area">
-{{--    <div class="top-header">--}}
-{{--        <div class="container">--}}
-{{--            <div class="row align-items-center">--}}
-{{--                <div class="col-lg-4 col-md-6">--}}
-{{--                    <div class="header-left-content">--}}
-{{--                        <ul class="contact-info">--}}
-{{--                            <li>--}}
-{{--                                <i class="bx bx-envelope"></i>--}}
-{{--                                <a href="mailto:info@lixa.com">--}}
-{{--                                    info@lixa.com--}}
-{{--                                </a>--}}
-{{--                            </li>--}}
-{{--                        </ul>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-
-{{--                <div class="col-lg-4 col-md-6">--}}
-{{--                    <div class="offer-content">--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-
-{{--                <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">--}}
-{{--                    <div class="header-right-content">--}}
-{{--                        <ul class="social-link">--}}
-{{--                            <li>--}}
-{{--                                <a href="https://www.facebook.com/" target="_blank">--}}
-{{--                                    <i class="bx bxl-facebook"></i>--}}
-{{--                                </a>--}}
-{{--                            </li>--}}
-{{--                            <li>--}}
-{{--                                <a href="https://www.instagram.com/" target="_blank">--}}
-{{--                                    <i class="bx bxl-instagram"></i>--}}
-{{--                                </a>--}}
-{{--                            </li>--}}
-{{--                        </ul>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-
     <div class="navbar-area">
         <div class="mobile-responsive-nav">
             <div class="container">
@@ -84,6 +43,15 @@
                             </li>
                         </ul>
                         <div class="others-options">
+                            @if(\Illuminate\Support\Facades\Route::current()->getName() != 'home')
+                                <ul>
+                                    <li>
+                                        <button type="button" class="search-btn" data-bs-toggle="modal" data-bs-target="#exampleModalsrc">
+                                            <i class="bx bx-search"></i>
+                                        </button>
+                                    </li>
+                                </ul>
+                            @endif
                         </div>
                     </div>
                 </nav>
@@ -91,3 +59,33 @@
         </div>
     </div>
 </header>
+@if(\Illuminate\Support\Facades\Route::current()->getName() != 'home')
+<div class="modal fade search-modal-area" id="exampleModalsrc">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <button type="button"
+                    data-bs-dismiss="modal"
+                    class="closer-btn"
+                    style="background-color: #000000;">
+                <i class="bx bx-x"></i>
+            </button>
+            <div class="modal-body">
+                <div class="sidebar-widget search">
+                    <h3>Search</h3>
+                    <form class="search-form">
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="companies"
+                            name="companies"
+                            placeholder="{{ Lang::get('application.general.search') }}" >
+                        <button class="search-button" type="submit">
+                            <i class="bx bx-search"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endif
