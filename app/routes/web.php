@@ -8,6 +8,7 @@ use App\Http\Controllers\CompanyInformationController;
 use App\Http\Controllers\CompanyRegistrationController;
 use App\Http\Controllers\ReviewRegistrationController;
 
+use App\Http\Controllers\ReviewVotingController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -40,6 +41,18 @@ Route::get('/location/{countryId}/states', [
     'as' => 'location.states',
     'uses' => LocationController::class . '@states'
 ]);
+
+Route::prefix('/reviews/{id}')->group(function () {
+    Route::post('/vote-positive', [
+        'as' => 'reviews.vote_positive',
+        'uses' => ReviewVotingController::class . '@votePositive'
+    ]);
+
+    Route::post('/vote-negative', [
+        'as' => 'reviews.vote_negative',
+        'uses' => ReviewVotingController::class . '@voteNegative'
+    ]);
+});
 
 Route::prefix('/companies')->group(function () {
     Route::get('/register', [
@@ -79,5 +92,6 @@ Route::prefix('/companies')->group(function () {
         ]);
     });
 });
+
 
 include('backoffice.php');
