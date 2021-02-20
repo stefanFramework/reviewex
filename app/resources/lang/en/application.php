@@ -67,6 +67,8 @@ return [
             'tags_title' => 'What people are saying',
             'tags_no_content' => 'No news so far ... be the first!',
             'reviews_summary_amount' => ':number reviews',
+            'review_agree' => 'I agree with this',
+            'review_disagree' => 'I disagree with this',
 
         ],
         'registration' => [

@@ -11,7 +11,7 @@ use App\Exceptions\ExceptionFormatter;
 use App\Domain\Models\Review;
 use App\Domain\Repositories\ReviewRepository;
 
-class ReviewVotingController extends ApplicationController
+class ReviewReactionController extends ApplicationController
 {
     private ReviewRepository $reviewRepository;
 
@@ -21,12 +21,12 @@ class ReviewVotingController extends ApplicationController
         parent::__construct();
     }
 
-    public function votePositive(int $reviewId)
+    public function likeReview(int $reviewId)
     {
         try {
             /** @var Review $review */
             $review = $this->reviewRepository->getById($reviewId);
-            $review->increasePositiveVotes();
+            $review->markAsLiked();
             return Response::json([], 200);
         } catch (Throwable $ex) {
             Logger::error('review.votePositive', ['ex' => ExceptionFormatter::format($ex)]);
@@ -34,12 +34,39 @@ class ReviewVotingController extends ApplicationController
         }
     }
 
-    public function voteNegative(int $reviewId)
+    public function unlikeReview(int $reviewId)
     {
         try {
             /** @var Review $review */
             $review = $this->reviewRepository->getById($reviewId);
-            $review->increaseNegativeVotes();
+            $review->removeLike();
+            return Response::json([], 200);
+        } catch (Throwable $ex) {
+            Logger::error('review.votePositive', ['ex' => ExceptionFormatter::format($ex)]);
+            return Response::json([], 500);
+        }
+    }
+
+
+    public function dislikeReview(int $reviewId)
+    {
+        try {
+            /** @var Review $review */
+            $review = $this->reviewRepository->getById($reviewId);
+            $review->markAsDisliked();
+            return Response::json([], 200);
+        } catch (Throwable $ex) {
+            Logger::error('review.votePositive', ['ex' => ExceptionFormatter::format($ex)]);
+            return Response::json([], 500);
+        }
+    }
+
+    public function undislikeReview(int $reviewId)
+    {
+        try {
+            /** @var Review $review */
+            $review = $this->reviewRepository->getById($reviewId);
+            $review->removeDislike();
             return Response::json([], 200);
         } catch (Throwable $ex) {
             Logger::error('review.votePositive', ['ex' => ExceptionFormatter::format($ex)]);

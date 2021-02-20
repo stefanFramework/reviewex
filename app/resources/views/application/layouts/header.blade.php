@@ -1,4 +1,9 @@
 <header class="header-area">
+    @php
+        {{
+            $currentRoute = \Illuminate\Support\Facades\Route::current();
+        }}
+    @endphp
     <div class="navbar-area">
         <div class="mobile-responsive-nav">
             <div class="container">
@@ -43,7 +48,7 @@
                             </li>
                         </ul>
                         <div class="others-options">
-                            @if(\Illuminate\Support\Facades\Route::current()->getName() != 'home')
+                            @if(!is_null($currentRoute) && $currentRoute->getName() != 'home')
                                 <ul>
                                     <li>
                                         <button type="button" class="search-btn" data-bs-toggle="modal" data-bs-target="#exampleModalsrc">
@@ -59,7 +64,7 @@
         </div>
     </div>
 </header>
-@if(\Illuminate\Support\Facades\Route::current()->getName() != 'home')
+@if(!is_null($currentRoute) && $currentRoute->getName() != 'home')
 <div class="modal fade search-modal-area" id="exampleModalsrc">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">

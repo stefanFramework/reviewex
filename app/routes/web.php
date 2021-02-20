@@ -8,7 +8,7 @@ use App\Http\Controllers\CompanyInformationController;
 use App\Http\Controllers\CompanyRegistrationController;
 use App\Http\Controllers\ReviewRegistrationController;
 
-use App\Http\Controllers\ReviewVotingController;
+use App\Http\Controllers\ReviewReactionController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -43,14 +43,24 @@ Route::get('/location/{countryId}/states', [
 ]);
 
 Route::prefix('/reviews/{id}')->group(function () {
-    Route::post('/vote-positive', [
-        'as' => 'reviews.vote_positive',
-        'uses' => ReviewVotingController::class . '@votePositive'
+    Route::post('/like', [
+        'as' => 'reviews.like',
+        'uses' => ReviewReactionController::class . '@likeReview'
     ]);
 
-    Route::post('/vote-negative', [
-        'as' => 'reviews.vote_negative',
-        'uses' => ReviewVotingController::class . '@voteNegative'
+    Route::post('/dislike', [
+        'as' => 'reviews.dislike',
+        'uses' => ReviewReactionController::class . '@dislikeReview'
+    ]);
+
+    Route::post('/unlike', [
+        'as' => 'reviews.unlike',
+        'uses' => ReviewReactionController::class . '@unlikeReview'
+    ]);
+
+    Route::post('/undislike', [
+        'as' => 'reviews.undislike',
+        'uses' => ReviewReactionController::class . '@undislikeReview'
     ]);
 });
 

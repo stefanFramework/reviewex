@@ -6,6 +6,7 @@ namespace App\Http\Records;
 
 class ReviewRecord
 {
+    public ?int $id;
     public ?string $title;
     public ?string $text;
     public ?int $score;
@@ -15,5 +16,7 @@ class ReviewRecord
     public ?string $businessSector;
     public ?string $city;
     public ?string $state;
+    public int $likes = 0;
+    public int $dislikes = 0;
     public array $tags = [];
 }

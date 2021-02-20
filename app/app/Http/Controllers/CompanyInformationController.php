@@ -88,9 +88,11 @@ class CompanyInformationController extends ApplicationController
     {
         return $reviews->reduce(function (array $carry, Review $review) {
             $record = new ReviewRecord();
+            $record->id = $review->id;
             $record->title = $review->title;
             $record->text = $review->text;
             $record->score = $review->score;
+            $record->votes = $review->consolidated_votes;
             $record->date = $review->created_at->format('M, Y');
 
             $carry[]= $record;

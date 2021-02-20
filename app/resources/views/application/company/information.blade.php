@@ -94,16 +94,37 @@
                                                         </div>
 
                                                         <h3>{{ $review->title }}</h3>
-                                                        <span>
+                                                        <span style="font-size: 18px;">
+                                                            <i class="bx bx-calendar"></i>
                                                             <strong>{{ $review->date }}</strong>
                                                         </span>
                                                         <p>{{ $review->text }}</p>
-                                                        <div class="review-report-link" style="font-size: 32px; text-decoration: none;">
-                                                            <a href="#" title="Vot Si!">
-                                                                <i class="bx bx-plus-circle"></i>
+                                                        <div id="social-{{ $review->id }}" class="review-report-link" style="font-size: 32px; text-decoration: none;">
+                                                            <a href="#"
+                                                               class="review-like"
+                                                               data-id="{{ $review->id }}"
+                                                               title="{{ Lang::get('application.company.information.review_agree') }}">
+                                                                <i class="bx bx-like"></i>
                                                             </a>
-                                                            <a href="#" title="">
-                                                                <i class="bx bx-minus-circle"></i>
+                                                            <a href="#"
+                                                               class="review-unlike"
+                                                               style="display: none;"
+                                                               data-id="{{ $review->id }}"
+                                                               title="{{ Lang::get('application.company.information.review_agree') }}">
+                                                                <i class="bx bxs-like"></i>
+                                                            </a>
+                                                            <a href="#"
+                                                               class="review-dislike"
+                                                               data-id="{{ $review->id }}"
+                                                               title="{{ Lang::get('application.company.information.review_disagree') }}">
+                                                                <i class="bx bx-dislike"></i>
+                                                            </a>
+                                                            <a href="#"
+                                                               class="review-undislike"
+                                                               style="display: none;"
+                                                               data-id="{{ $review->id }}"
+                                                               title="{{ Lang::get('application.company.information.review_disagree') }}">
+                                                                <i class="bx bxs-dislike"></i>
                                                             </a>
                                                         </div>
                                                     </div>
@@ -117,6 +138,11 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div id="confirmation-alert"
+             class="alert alert-secondary alert-dismissible fade show"
+             style="width: 250px; background-color: #000000; color:#ffffff; display: none;">
+            Reaction registered!
         </div>
     </div>
 </section>
@@ -145,6 +171,21 @@
 @endsection
 
 @section('javascript')
-    <script type="text/javascript">
-    </script>
+<script type="text/javascript" src="{{ asset('assets/js/application/request_maker.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/application/review_reaction.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var requestMaker = new window.reviewex.utils.RequestMaker();
+        var reactionManager = new  window.reviewex.review.ReviewReactionManager();
+
+        reactionManager.requestMaker = requestMaker;
+        reactionManager.likeUrl = "{{ route('reviews.like', ['id' => 'ID']) }}";
+        reactionManager.dislikeUrl = "{{ route('reviews.dislike', ['id' => 'ID']) }}";
+        reactionManager.unlikeUrl = "{{ route('reviews.unlike', ['id' => 'ID']) }}";
+        reactionManager.undislikeUrl = "{{ route('reviews.undislike', ['id' => 'ID']) }}";
+        reactionManager.securityToken = "{{ csrf_token() }}";
+        reactionManager.init();
+    });
+</script>
 @endsection
