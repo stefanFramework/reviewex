@@ -44,6 +44,7 @@ class Review extends Model
     {
         $this->likes += 1;
         $this->save();
+        $this->updateSocialScore();
     }
 
     public function removeLike(): void
@@ -54,12 +55,14 @@ class Review extends Model
 
         $this->likes -= 1;
         $this->save();
+        $this->updateSocialScore();
     }
 
     public function markAsDisliked(): void
     {
         $this->dislikes += 1;
         $this->save();
+        $this->updateSocialScore();
     }
 
     public function removeDislike(): void
@@ -70,8 +73,15 @@ class Review extends Model
 
         $this->dislikes -= 1;
         $this->save();
+        $this->updateSocialScore();
     }
 
+    private function updateSocialScore(): void
+    {
+        $diff = ($this->likes - $this->dislikes);
+        $this->social_score = $diff >= 0 ? $diff : 0;
+        $this->save();
+    }
 
 
     public function getReviewStatusIdAttribute(): ReviewStatus

@@ -69,7 +69,6 @@ return [
             'reviews_summary_amount' => ':number reviews',
             'review_agree' => 'I agree with this',
             'review_disagree' => 'I disagree with this',
-
         ],
         'registration' => [
             'default_selection' => '',

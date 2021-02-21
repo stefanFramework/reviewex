@@ -68,7 +68,7 @@
                     @else
                         <ul>
                             @foreach($company->tags as $tag)
-                                <li><a href="#">{{ $tag }}</a></li>
+                                <li><a href="javascript:void(0);">{{ $tag }}</a></li>
                             @endforeach
                         </ul>
                     @endif
@@ -100,26 +100,26 @@
                                                         </span>
                                                         <p>{{ $review->text }}</p>
                                                         <div id="social-{{ $review->id }}" class="review-report-link" style="font-size: 32px; text-decoration: none;">
-                                                            <a href="#"
+                                                            <a href="javascript:void(0);"
                                                                class="review-like"
                                                                data-id="{{ $review->id }}"
                                                                title="{{ Lang::get('application.company.information.review_agree') }}">
                                                                 <i class="bx bx-like"></i>
                                                             </a>
-                                                            <a href="#"
+                                                            <a href="javascript:void(0);"
                                                                class="review-unlike"
                                                                style="display: none;"
                                                                data-id="{{ $review->id }}"
                                                                title="{{ Lang::get('application.company.information.review_agree') }}">
                                                                 <i class="bx bxs-like"></i>
                                                             </a>
-                                                            <a href="#"
+                                                            <a href="javascript:void(0);"
                                                                class="review-dislike"
                                                                data-id="{{ $review->id }}"
                                                                title="{{ Lang::get('application.company.information.review_disagree') }}">
                                                                 <i class="bx bx-dislike"></i>
                                                             </a>
-                                                            <a href="#"
+                                                            <a href="javascript:void(0);"
                                                                class="review-undislike"
                                                                style="display: none;"
                                                                data-id="{{ $review->id }}"
