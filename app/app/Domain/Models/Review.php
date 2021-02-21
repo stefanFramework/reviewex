@@ -40,6 +40,50 @@ class Review extends Model
         );
     }
 
+    public function markAsLiked(): void
+    {
+        $this->likes += 1;
+        $this->save();
+        $this->updateSocialScore();
+    }
+
+    public function removeLike(): void
+    {
+        if (($this->likes - 1) < 0) {
+            return;
+        }
+
+        $this->likes -= 1;
+        $this->save();
+        $this->updateSocialScore();
+    }
+
+    public function markAsDisliked(): void
+    {
+        $this->dislikes += 1;
+        $this->save();
+        $this->updateSocialScore();
+    }
+
+    public function removeDislike(): void
+    {
+        if (($this->dislikes - 1) < 0) {
+            return;
+        }
+
+        $this->dislikes -= 1;
+        $this->save();
+        $this->updateSocialScore();
+    }
+
+    private function updateSocialScore(): void
+    {
+        $diff = ($this->likes - $this->dislikes);
+        $this->social_score = $diff >= 0 ? $diff : 0;
+        $this->save();
+    }
+
+
     public function getReviewStatusIdAttribute(): ReviewStatus
     {
         $statusId = $this->review_status_id;

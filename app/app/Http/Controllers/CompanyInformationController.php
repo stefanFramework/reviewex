@@ -4,6 +4,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Records\Factories\CompanyRecordFactory;
+use App\Http\Records\Factories\ReviewRecordFactory;
 use Exception;
 use Throwable;
 
@@ -87,13 +88,7 @@ class CompanyInformationController extends ApplicationController
     private function getReviewsRecord(Collection $reviews): array
     {
         return $reviews->reduce(function (array $carry, Review $review) {
-            $record = new ReviewRecord();
-            $record->title = $review->title;
-            $record->text = $review->text;
-            $record->score = $review->score;
-            $record->date = $review->created_at->format('M, Y');
-
-            $carry[]= $record;
+            $carry[]= ReviewRecordFactory::crateFromModel($review);
             return $carry;
         }, []);
     }

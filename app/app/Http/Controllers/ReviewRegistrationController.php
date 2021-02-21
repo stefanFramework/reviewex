@@ -69,14 +69,13 @@ class ReviewRegistrationController extends ApplicationController
             $inputData = $request->all();
             $this->validateData($inputData);
 
-
             $reviewRecord = new ReviewRecord();
             $reviewRecord->title = $inputData['title'];
             $reviewRecord->text = $inputData['text'];
             $reviewRecord->score = $inputData['score'];
             $reviewRecord->tags = array_key_exists('tags', $inputData) ? $inputData['tags'] : [];
             $reviewRecord->companyCode = $companyCode;
-            $review = $this->registrationService->register($reviewRecord);
+            $this->registrationService->register($reviewRecord);
 
             return Redirect::route('reviews.success', [
                 'code' => $companyCode
