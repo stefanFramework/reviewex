@@ -37,7 +37,7 @@ class HomeController extends ApplicationController
     public function index()
     {
         $latestReviews = $this->reviewRepository->getLatest(
-            'score',
+            'social_score',
             'desc',
             5
         );
