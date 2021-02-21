@@ -96,7 +96,7 @@
                                                         <h3>{{ $review->title }}</h3>
                                                         <span style="font-size: 18px;">
                                                             <i class="bx bx-calendar"></i>
-                                                            <strong>{{ $review->date }}</strong>
+                                                            <strong>{{ $review->date->format('M, Y') }}</strong>
                                                         </span>
                                                         <p>{{ $review->text }}</p>
                                                         <div id="social-{{ $review->id }}" class="review-report-link" style="font-size: 32px; text-decoration: none;">

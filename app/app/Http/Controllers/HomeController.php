@@ -3,6 +3,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Records\Factories\ReviewRecordFactory;
 use Throwable;
 
 use Illuminate\Http\Request;
@@ -75,15 +76,7 @@ class HomeController extends ApplicationController
     private function getReviewRecords(Collection $reviews): array
     {
         return $reviews->reduce(function ($carry, Review $review) {
-            $record = new ReviewRecord();
-            $record->title = $review->title;
-            $record->text = $review->text;
-            $record->score = (int) $review->score;
-            $record->company = $review->company->name;
-            $record->city = $review->company->city;
-            $record->businessSector = $review->company->businessSector->name;
-            $record->state = $review->company->state->name;
-            $carry[] = $record;
+            $carry[] = ReviewRecordFactory::crateFromModel($review);
             return $carry;
         }, []);
 
