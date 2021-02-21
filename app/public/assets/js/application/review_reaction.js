@@ -51,45 +51,38 @@
         var self = this;
 
         if (self._comesFromPreviousDislike()) {
-            self._makeRequest(self.undislikeUrl.replace('ID', id)).then(function () {
-                $('#social-' + id + ' ' + self.ids.undislikeElement).hide();
-                $('#social-' + id + ' ' + self.ids.dislikeElement).show();
-            });
+            self._toggleDislikeElement(id, false);
+            self._makeRequest(self.undislikeUrl.replace('ID', id));
         }
 
-        self._makeRequest(self.likeUrl.replace('ID', id)).then(function () {
-            self._toggleLikeElement(id,true);
-        });
+        self._toggleLikeElement(id,true);
+        self._makeRequest(self.likeUrl.replace('ID', id));
     };
 
     ReviewReactionManager.prototype._dislikeReview = function (id) {
         var self = this;
 
         if (self._comesFromPreviousLike()) {
-            self._makeRequest(self.unlikeUrl.replace('ID', id)).then(function () {
-                self._toggleLikeElement(id,false);
-            });
+            self._toggleLikeElement(id,false);
+            self._makeRequest(self.unlikeUrl.replace('ID', id));
         }
 
-        self._makeRequest(self.dislikeUrl.replace('ID', id)).then(function () {
-            self._toggleDislikeElement(id,true);
-        });
+        self._toggleDislikeElement(id,true);
+        self._makeRequest(self.dislikeUrl.replace('ID', id));
     };
 
     ReviewReactionManager.prototype._unlikeReview = function (id) {
         var self = this;
 
-        self._makeRequest(self.unlikeUrl.replace('ID', id)).then(function () {
-            self._toggleLikeElement(id,false);
-        });
+        self._toggleLikeElement(id,false);
+        self._makeRequest(self.unlikeUrl.replace('ID', id));
     };
 
     ReviewReactionManager.prototype._undislikeReview = function (id) {
         var self = this;
 
-        self._makeRequest(self.undislikeUrl.replace('ID', id)).then(function () {
-            self._toggleDislikeElement(id,false)
-        });
+        self._toggleDislikeElement(id,false)
+        self._makeRequest(self.undislikeUrl.replace('ID', id));
     };
 
     ReviewReactionManager.prototype._toggleLikeElement = function (id, toggleForLike) {
