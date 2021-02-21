@@ -94,9 +94,16 @@
                                                         </div>
 
                                                         <h3>{{ $review->title }}</h3>
-                                                        <span style="font-size: 18px;">
+                                                        <span style="font-size: 16px;">
                                                             <i class="bx bx-calendar"></i>
                                                             <strong>{{ $review->date->format('M, Y') }}</strong>
+                                                        </span>
+                                                        <span>
+                                                            @if ($review->socialScore == 0)
+                                                                {{ Lang::get('application.company.information.no_validation') }}
+                                                            @else
+                                                                {{ Lang::get('application.company.information.validated_times', ['number' => $review->socialScore]) }}
+                                                            @endif
                                                         </span>
                                                         <p>{{ $review->text }}</p>
                                                         <div id="social-{{ $review->id }}" class="review-report-link" style="font-size: 32px; text-decoration: none;">
@@ -138,11 +145,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div id="confirmation-alert"
-             class="alert alert-secondary alert-dismissible fade show"
-             style="width: 250px; background-color: #000000; color:#ffffff; display: none;">
-            Reaction registered!
         </div>
     </div>
 </section>
