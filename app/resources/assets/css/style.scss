@@ -6,7 +6,7 @@ is the file you need to edit to change the look of the template.
 
 This files table contents are outlined below>>>>>
 
-******************************************* 
+*******************************************
 ** - DEFAULT AREA STYLE - **
 
 ** - Default Btn Area Style
@@ -52,7 +52,8 @@ $body-family: 'Open Sans', sans-serif;
 $heading-font-family: 'Source Sans Pro', sans-serif;
 
 $body-color: #1b191c;
-$main-color: #c4ab90;
+$main-color: #274472;
+$main-background: #8ca8d4;
 $main-color-three: #d91717;
 $heading-color: #0e0f11;
 $white-color: #ffffff;
@@ -80,7 +81,7 @@ a {
 	}
 }
 button {
-    outline: 0 !important; 
+    outline: 0 !important;
 	box-shadow: none;
 	border: none;
 	padding: 0;
@@ -110,7 +111,7 @@ p {
 	&:last-child {
         margin-bottom: 0;
     }
-} 
+}
 img {
     max-width: 100%;
     height: auto;
@@ -140,7 +141,7 @@ img {
         box-shadow: unset;
     }
 }
-textarea {   
+textarea {
     &.form-control {
         height: auto;
     }
@@ -260,7 +261,7 @@ Section Title Area Style*/
 	}
 	h2 {
 		font-size: 40px;
-		margin-bottom: 20px; 
+		margin-bottom: 20px;
 		position: relative;
 		&:last-child {
 			margin-bottom: 0;
@@ -354,7 +355,7 @@ Header Area Style
 				}
 			}
 		}
-		
+
 	}
 	.offer-content {
 		text-align: center;
@@ -605,11 +606,11 @@ Navbar Area Style
                                     top: 0;
                                     opacity: 0;
                                     visibility: hidden;
-        
+
                                     li {
                                         a {
                                             color: $black-color;
-                                            
+
                                             &:hover, &:focus, &.active {
                                                 color: $main-color;
                                             }
@@ -622,7 +623,7 @@ Navbar Area Style
                                             li {
                                                 a {
                                                     color: $black-color;
-                                                    
+
                                                     &:hover, &:focus, &.active {
                                                         color: $main-color;
                                                     }
@@ -635,7 +636,7 @@ Navbar Area Style
                                                     li {
                                                         a {
                                                             color: $black-color;
-                                                            
+
                                                             &:hover, &:focus, &.active {
                                                                 color: $main-color;
                                                             }
@@ -648,7 +649,7 @@ Navbar Area Style
                                                             li {
                                                                 a {
                                                                     color: $black-color;
-                                                                    
+
                                                                     &:hover, &:focus, &.active {
                                                                         color: $main-color;
                                                                     }
@@ -975,7 +976,7 @@ Search Modal Area Style
 
 /*
 Sidebar Area Style
-======================================================*/ 
+======================================================*/
 .sidebar-modal {
 	position: fixed;
 	right: 0;
@@ -1379,7 +1380,7 @@ Trending Area Style
 			&:hover {
 				a {
 					color: $main-color;
-				}	
+				}
 			}
 		}
 		a {
@@ -1406,7 +1407,7 @@ Trending Area Style
 			right: 0;
 		}
 	}
-}	
+}
 
 /*
 Best Selling Area Style
@@ -1472,7 +1473,7 @@ Best Selling Area Style
 							color: $white-color;
 						}
 					}
-				}	
+				}
 				&:nth-child(1) {
 					a {
 						i {
@@ -1770,7 +1771,7 @@ Collection Area Style
 	overflow: hidden;
 }
 .single-collection-1 {
-	background-color: #f5f2f2;
+	background-color: $main-color;
 	padding-top: 50px;
 	position: relative;
 	&::before, &::after {
@@ -1819,7 +1820,7 @@ Collection Area Style
 	}
 }
 .single-collection-2 {
-	background-color: #f5f2f2;
+	background-color: $main-background;
 	height: 100%;
 	position: relative;
 	&::before, &::after {
@@ -2089,7 +2090,7 @@ Blog Area Style
 							color: $main-color-three;
 						}
 						a {
-							
+
 							&:hover {
 								color: $main-color-three;
 							}
@@ -2970,7 +2971,7 @@ Best Products Area Style
 			}
 		}
 	}
-	
+
 }
 
 /*
@@ -3066,13 +3067,13 @@ Featured Area Style
 INNER PAGES STYLE AREA
 ======================================================*/
 
-/* 
+/*
 Page Title Area Style
-=====================================================*/ 
+=====================================================*/
 .page-title-area {
 	padding-top: 100px;
 	padding-bottom: 100px;
-	background-color: #f5f2f2;
+	background-color: $main-background;
 	text-align: center;
 	.page-title-content {
 		position: relative;
@@ -3122,7 +3123,7 @@ Page Title Area Style
 				}
 			}
 		}
-	}	
+	}
 }
 
 /*
@@ -3137,7 +3138,7 @@ FAQ Area CSS
 					border: 1px solid #ebebeb;
 				}
 				.accordion-content {
-					background-color: #f5f2f2;
+					background-color: $main-background;
 				}
 			}
 		}
@@ -3198,15 +3199,15 @@ FAQ Area CSS
 	}
 }
 
-/* 
+/*
 Main Contact Area Style
-=====================================================*/ 
-/* 
+=====================================================*/
+/*
 Main Contact Area Style
-=====================================================*/ 
+=====================================================*/
 .main-contact-area {
 	h3 {
-		background-color: #f5f2f2;
+		background-color: $main-background;
 		font-size: 24px;
 		padding: 15px 30px;
 		margin-bottom: 0;
@@ -3342,9 +3343,9 @@ Main Contact Area Style
 	}
 }
 
-/* 
+/*
 Map Area Style
-=====================================================*/ 
+=====================================================*/
 .map-area {
 	iframe {
 		height: 480px;
@@ -3629,9 +3630,9 @@ Partner details Style
 	}
 }
 
-/* 
+/*
 Blog Details Content Style
-=====================================================*/ 
+=====================================================*/
 .blog-details-content {
 	.blog-details-img {
 		position: relative;
@@ -3698,7 +3699,7 @@ Blog Details Content Style
 			}
 		}
 		blockquote {
-			background-color: #f5f2f2;
+			background-color: $main-background;
 			padding: 30px;
 			margin-top: 20px;
 			margin-bottom: 20px;
@@ -3757,7 +3758,7 @@ Blog Details Content Style
 	}
 	.leave-reply {
 		h3 {
-			background-color: #f5f2f2;
+			background-color: $main-background;
 			padding: 15px 30px;
 			margin-bottom: 0;
 			font-size: 24px;
@@ -3785,9 +3786,9 @@ Blog Details Content Style
 	}
 }
 
-/* 
+/*
 Sidebar Widget Style
-=====================================================*/ 
+=====================================================*/
 .widget-sidebar {
 	margin-left: 15px;
 }
@@ -3795,7 +3796,7 @@ Sidebar Widget Style
 	margin-bottom: 35px;
 	h3 {
 		font-size: 20px;
-		background-color: #f5f2f2;
+		background-color: $main-background;
 		padding: 15px 30px;
 		margin-bottom: 0;
 	}
@@ -3923,14 +3924,14 @@ Sidebar Widget Style
 	}
 }
 
-/* 
+/*
 Product Listing Area Style
-=====================================================*/ 
+=====================================================*/
 .product-listing-sidebar {
 	.product-listing-widget {
 		margin-bottom: 35px;
 		h3 {
-			background-color: #f5f2f2;
+			background-color: $main-background;
 			padding: 15px 30px;
 			font-size: 20px;
 			margin-bottom: 0;
@@ -4598,7 +4599,7 @@ Shopping Cart Area Style
 	}
 }
 
-/* 
+/*
 Checkout Area Style
 =====================================================*/
 .checkout-area {
@@ -5138,7 +5139,7 @@ product-view-one
 								background: green;
 							}
 						}
-						
+
 						a.color-yellowgreen {
 							&::before {
 								background: yellowgreen;
@@ -5319,9 +5320,9 @@ product-view-one
 	}
 	.owl-theme {
 		.owl-nav {
-			margin-top: 0 !important; 
+			margin-top: 0 !important;
 		}
-	} 
+	}
 	.owl-theme .owl-nav [class*=owl-]:hover {
 		background-color: transparent;
 	}
@@ -5390,110 +5391,110 @@ Preloader Area Style*/
 	}
 }
 @keyframes flipA {
-    from, 75%, to { 
-        transform: rotate(0) 
+    from, 75%, to {
+        transform: rotate(0)
     }
-    25%, 50% { 
-        transform: rotate(90deg) 
+    25%, 50% {
+        transform: rotate(90deg)
     }
 }
 @keyframes flipB {
-    from { 
-        transform: translateY(0) rotateX(0deg) 
+    from {
+        transform: translateY(0) rotateX(0deg)
     }
-    6.25% { 
-        transform: translateY(0) rotateX(0deg) 
+    6.25% {
+        transform: translateY(0) rotateX(0deg)
     }
-    12.5% { 
-        transform: translateY(-50%) rotateX(90deg) 
+    12.5% {
+        transform: translateY(-50%) rotateX(90deg)
     }
-    18.75% { 
-        transform: translateY(0) rotateX(180deg) 
+    18.75% {
+        transform: translateY(0) rotateX(180deg)
     }
-    31.25% { 
-        transform: translateY(0) rotateX(180deg) 
+    31.25% {
+        transform: translateY(0) rotateX(180deg)
     }
-    37.5% { 
-        transform: translateY(-50%) rotateX(270deg) 
+    37.5% {
+        transform: translateY(-50%) rotateX(270deg)
     }
-    43.75% { 
-        transform: translateY(0) rotateX(360deg) 
+    43.75% {
+        transform: translateY(0) rotateX(360deg)
     }
-    50% { 
-        transform: translateY(0) rotateX(360deg) 
+    50% {
+        transform: translateY(0) rotateX(360deg)
     }
-    56.25% { 
-        transform: translateY(0) rotateX(360deg) 
+    56.25% {
+        transform: translateY(0) rotateX(360deg)
     }
-    62.5% { 
-        transform: translateY(-50%) rotateX(450deg) 
+    62.5% {
+        transform: translateY(-50%) rotateX(450deg)
     }
-    68.75% { 
-        transform: translateY(0) rotateX(540deg) 
+    68.75% {
+        transform: translateY(0) rotateX(540deg)
     }
-    81.25% { 
-        transform: translateY(0) rotateX(540deg) 
+    81.25% {
+        transform: translateY(0) rotateX(540deg)
     }
-    87.5% { 
-        transform: translateY(-50%) rotateX(630deg) 
+    87.5% {
+        transform: translateY(-50%) rotateX(630deg)
     }
-    93.75% { 
-        transform: translateY(0) rotateX(720deg) 
+    93.75% {
+        transform: translateY(0) rotateX(720deg)
     }
-    to { 
-        transform: translateY(0) rotateX(720deg) 
+    to {
+        transform: translateY(0) rotateX(720deg)
     }
 }
 @keyframes flipC {
-    from { 
-        transform: translateY(100%) rotateZ(180deg) rotateX(0deg) 
+    from {
+        transform: translateY(100%) rotateZ(180deg) rotateX(0deg)
     }
-    6.25% { 
-        transform: translateY(100%) rotateZ(180deg) rotateX(0deg) 
+    6.25% {
+        transform: translateY(100%) rotateZ(180deg) rotateX(0deg)
     }
-    12.5% { 
-        transform: translateY(150%) rotateZ(180deg) rotateX(90deg) 
+    12.5% {
+        transform: translateY(150%) rotateZ(180deg) rotateX(90deg)
     }
-    18.75% { 
-        transform: translateY(100%) rotateZ(180deg) rotateX(180deg) 
+    18.75% {
+        transform: translateY(100%) rotateZ(180deg) rotateX(180deg)
     }
-    31.25% { 
-        transform: translateY(100%) rotateZ(180deg) rotateX(180deg) 
+    31.25% {
+        transform: translateY(100%) rotateZ(180deg) rotateX(180deg)
     }
-    37.5% { 
-        transform: translateY(150%) rotateZ(180deg) rotateX(270deg) 
+    37.5% {
+        transform: translateY(150%) rotateZ(180deg) rotateX(270deg)
     }
-    43.75% { 
-        transform: translateY(100%) rotateZ(180deg) rotateX(360deg) 
+    43.75% {
+        transform: translateY(100%) rotateZ(180deg) rotateX(360deg)
     }
-    50% { 
-        transform: translateY(100%) rotateZ(180deg) rotateX(360deg) 
+    50% {
+        transform: translateY(100%) rotateZ(180deg) rotateX(360deg)
     }
-    56.25% { 
-        transform: translateY(100%) rotateZ(180deg) rotateX(360deg) 
+    56.25% {
+        transform: translateY(100%) rotateZ(180deg) rotateX(360deg)
     }
-    62.5% { 
-        transform: translateY(150%) rotateZ(180deg) rotateX(450deg) 
+    62.5% {
+        transform: translateY(150%) rotateZ(180deg) rotateX(450deg)
     }
-    68.75% { 
-        transform: translateY(100%) rotateZ(180deg) rotateX(540deg) 
+    68.75% {
+        transform: translateY(100%) rotateZ(180deg) rotateX(540deg)
     }
-    81.25% { 
-        transform: translateY(100%) rotateZ(180deg) rotateX(540deg) 
+    81.25% {
+        transform: translateY(100%) rotateZ(180deg) rotateX(540deg)
     }
-    87.5% { 
-        transform: translateY(150%) rotateZ(180deg) rotateX(630deg) 
+    87.5% {
+        transform: translateY(150%) rotateZ(180deg) rotateX(630deg)
     }
-    93.75% { 
-        transform: translateY(100%) rotateZ(180deg) rotateX(720deg) 
+    93.75% {
+        transform: translateY(100%) rotateZ(180deg) rotateX(720deg)
     }
-    to { 
-        transform: translateY(100%) rotateZ(180deg) rotateX(720deg) 
+    to {
+        transform: translateY(100%) rotateZ(180deg) rotateX(720deg)
     }
 }
 
 /*
-Go Top Style*/ 
+Go Top Style*/
 .go-top {
 	position: fixed;
 	cursor: pointer;
@@ -5582,10 +5583,10 @@ Go Top Style*/
 		visibility: visible;
 		right: 3%;
 		top: 87%;
-	} 
+	}
 	&.go-top-style-three {
 		background-color: $main-color-three;
-	}	
+	}
 }
 
 /*
