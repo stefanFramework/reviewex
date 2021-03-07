@@ -27,7 +27,8 @@ help() {
     echo "artisan\t\tExecutes an artisan command (Except for tinker)"
     echo "\033[1;34mtinker\033[0m\t\tExecutes a tinker interface"
     echo "composer\tExecutes composer commands"
-    echo "\033[1;34mclear\033[0m\t\tClears the cache"
+    echo "\033[1;34mnpm\033[0m\t\tExecutes npm commands"
+    echo "clear\t\tClears the cache"
     echo ""
 }
 
@@ -51,32 +52,36 @@ build() {
 }
 
 start() {
-    docker-compose up -d
+  docker-compose up -d
 }
 
 stop() {
-    docker-compose down
+  docker-compose down
 }
 
 restart() {
-    stop
-    start
+  stop
+  start
 }
 
 logs() {
-    docker logs -f reviewex_web
+  docker logs -f reviewex_web
 }
 
 artisan() {
-    docker exec reviewex_web php artisan $@
+  docker exec reviewex_web php artisan $@
 }
 
 tinker() {
-    docker exec -it reviewex_web php artisan tinker
+  docker exec -it reviewex_web php artisan tinker
 }
 
 composer() {
-    docker exec reviewex_web composer $@
+  docker exec reviewex_web composer $@
+}
+
+npm() {
+  docker exec reviewex_web npm $@
 }
 
 clear() {
@@ -115,6 +120,9 @@ case $COMMAND in
     ;;
     composer)
         composer $@
+    ;;
+    npm)
+        npm $@
     ;;
     help)
         help

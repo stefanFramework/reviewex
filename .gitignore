@@ -5,6 +5,7 @@
 docker-compose.yml
 db/data/*
 !db/data/.gitkeep
+app/public/assets/*
 
 /vendor/
 node_modules/

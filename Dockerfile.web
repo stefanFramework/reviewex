@@ -25,6 +25,9 @@ RUN apk update && apk add --no-cache \
 RUN docker-php-ext-install pdo pdo_mysql
 RUN docker-php-ext-enable pdo_mysql
 
+# Add nodejs and npm
+RUN apk add --update npm
+
 WORKDIR /var/www
 
 RUN php -r "copy('https://getcomposer.org/installer', '/tmp/composer-setup.php');"
@@ -32,3 +35,4 @@ RUN php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
 COPY ./app .
 RUN composer install
+RUN npm install
