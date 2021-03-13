@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/animate.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/select2_4_1_0.min.css') }}">
     <style>
         .ui-corner-all
         {
@@ -105,6 +106,7 @@
 <script src="{{ asset('assets/js/ajaxchimp.min.js') }}"></script>
 <script src="{{ asset('assets/js/range-slider.min.js') }}"></script>
 <script src="{{ asset('assets/js/custom.js') }}"></script>
+<script src="{{ asset('assets/js/select2_4_1_0.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/application/company_finder.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function () {

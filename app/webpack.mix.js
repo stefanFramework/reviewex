@@ -9,6 +9,7 @@ mix.sass('resources/assets/css/style.scss', 'public/assets/css/style.css')
     .copy('resources/assets/css/meanmenu.min.css', 'public/assets/css/meanmenu.min.css', false)
     .copy('resources/assets/css/owl.carousel.min.css', 'public/assets/css/owl.carousel.min.css', false)
     .copy('resources/assets/css/owl.theme.default.min.css', 'public/assets/css/owl.theme.default.min.css', false)
+    .copy('resources/assets/css/select2_4_1_0.min.css', 'public/assets/css/select2_4_1_0.min.css', false)
     .copy('resources/assets/js/', 'public/assets/js/', false)
     .copy('resources/assets/images/', 'public/assets/images/', false)
     .copy('resources/assets/fonts/', 'public/assets/fonts/', false);

@@ -190,6 +190,13 @@
             margin-right: 10px;
 
         }
+
+        .select2-container--default .select2-selection--single {
+            background-color: #fff;
+            border: 1px solid #ebebeb;
+            border-radius: 0px !important;
+            height: 50px;
+        }
     </style>
 @endsection
 
@@ -198,6 +205,11 @@
         $(document).ready(function () {
             var self = this;
             var locationUrl = "{{ route('location.states', ['countryId' => 'COUNTRY_ID']) }}";
+
+            $('#business_sector').select2();
+            $('#countries').select2();
+            $('#states').select2();
+
             $('#countries').change(function () {
                 var val = $(this).val();
                 if (val === '') {
